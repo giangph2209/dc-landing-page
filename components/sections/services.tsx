@@ -1,0 +1,115 @@
+import React from 'react'
+import { ArrowRightIcon } from 'lucide-react'
+import DevelopmentIcon from '@/public/icons/services/web-develop.png'
+import MobileIcon from '@/public/icons/services/mobile-app.png'
+import EcommerceIcon from '@/public/icons/services/backend-api.png'
+import DevOpsIcon from '@/public/icons/services/cloud.png'
+import QAIcon from '@/public/icons/services/ui-ux.png'
+import PerformanceIcon from '@/public/icons/services/360.png'
+import LandingPagesIcon from '@/public/icons/services/landing-page.png'
+import MaintenanceIcon from '@/public/icons/services/maintainer.png'
+import Image from 'next/image'
+
+const services = [
+  {
+    icon: DevelopmentIcon,
+    title: 'Web Development',
+    description: 'Thiết kế, xây dựng & triển khai website hiệu suất cao',
+    tags: ['Website', 'CMS', 'Thương mại điện tử']
+  },
+  {
+    icon: MobileIcon,
+    title: 'Mobile App',
+    description: 'Phát triển ứng dụng di động mượt mà, tối ưu trải nghiệm',
+    tags: ['iOS', 'Android', 'Đa nền tảng']
+  },
+  {
+    icon: EcommerceIcon,
+    title: 'Backend & API',
+    description: 'Xây dựng hệ thống backend & API bảo mật, ổn định',
+    tags: ['API', 'Cơ sở dữ liệu', 'Máy chủ']
+  },
+  {
+    icon: DevOpsIcon,
+    title: 'DevOps & Cloud',
+    description: 'Tối ưu hạ tầng, triển khai cloud linh hoạt, tự động hóa',
+    tags: ['Cloud', 'CI/CD', 'Tự động hóa']
+  },
+  {
+    icon: QAIcon,
+    title: 'UI/UX Design',
+    description: 'Thiết kế giao diện đẹp, trải nghiệm người dùng tối ưu',
+    tags: ['Wireframe', 'Prototype', 'UX/ UI']
+  },
+  {
+    icon: PerformanceIcon,
+    title: '360/3D',
+    description: 'Tạo nội dung 3D, trải nghiệm trực quan, sống động',
+    tags: ['3D', 'Animation', 'Visualization']
+  },
+  {
+    icon: LandingPagesIcon,
+    title: 'Landing Pages',
+    description: 'Thiết kế landing page tối ưu chuyển đổi, thu hút',
+    tags: ['Chuyển đổi', 'Marketing', 'SEO']
+  },
+  {
+    icon: MaintenanceIcon,
+    title: 'Maintenance',
+    description: 'Bảo trì hệ thống, cập nhật & hỗ trợ vận hành ổn định',
+    tags: ['Hỗ trợ', 'Cập nhật', 'Vận hành']
+  }
+]
+
+export default function Services() {
+  return (
+    <section id="services" className="relative"
+      style={{ backgroundImage: 'url(/images/service-bg.png)', backgroundSize: 'cover', backgroundPosition: 'center' }}
+    >
+      <div className="py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-primary mb-4">Dịch vụ của chúng tôi</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Chúng tôi cung cấp các giải pháp toàn diện cho mọi nhu cầu công nghệ của bạn, từ phát triển phần mềm đến hỗ trợ kỹ thuật
+            </p>
+            <div className="mt-4 mx-auto w-[180px] h-[6px] bg-gradient-primary rounded-full"></div>
+          </div>
+
+          {/* Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {services.map((service, index) => {
+              const Icon = service.icon
+              return (
+                <div
+                  key={index}
+                  className="group cursor-pointer custom-card-shadow custom-card-shadow-hover"
+                >
+                  {/* Icon container with gradient */}
+                  <div className="inline-block p-3 group-hover:scale-110 transition-transform">
+                    <Image src={Icon} alt={service.title} width={80} height={80} />
+                  </div>
+
+                  <h3 className="text-lg font-bold text-primary mb-2">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    {service.description}
+                  </p>
+
+                  {/* Bottom accent dot */}
+                  <div className="mt-4 flex items-center gap-2">
+                    <div className="bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full p-2">
+                      <ArrowRightIcon size={16} className="text-white font-bold" />
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
