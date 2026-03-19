@@ -1,42 +1,64 @@
-import React from 'react'
-import { ArrowRight } from 'lucide-react'
-import CTABannerImage from '@/public/images/cta.png'
-import Image from 'next/image'
+import { CheckCircle, ChevronRight } from "lucide-react";
+import ImageCTA from "@/public/images/cta/cta.png";
+import Image from "next/image";
+import { scrollToSection } from "@/components/utils/scrollToSection";
+import { toast } from "react-toastify";
 
 export default function CTABanner() {
+
+  const handleClick = () => {
+    scrollToSection("contact", 80);
+    toast.info(
+      "Vui lòng điền đầy đủ thông tin vào form liên hệ phía trên để nhận tư vấn miễn phí từ DCSoftware.",
+      {
+        autoClose: 4000,
+      },
+    );
+  }
+
   return (
-    <section className="py-20 px-6 relative overflow-hidden">
+    <section className="py-15 px-6 relative overflow-hidden" >
       <div className="max-w-7xl mx-auto xl:px-6">
         {/* Main CTA Banner */}
-        <div className="relative bg-[#4A65CD] p-12 rounded-3xl">
+        <div className="relative p-12" style={{
+          backgroundImage: `url('/images/cta/background.jpg')`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}>
           {/* Content */}
           <div className="relative">
             <div className="relative z-1">
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-shadow">
                 Tư vấn miễn phí
               </h2>
-              <p className="text-white/90 text-lg mb-8 max-w-xl text-balance text-shadow">
-                Chia sẻ nhu cầu của bạn, chúng tôi sẽ đề xuất giải pháp và lộ trình triển khai phù hợp.
-              </p>
+              <div className="text-white/90 text-lg mb-8 max-w-xl text-balance text-shadow">
+                <p>Chia sẻ nhu cầu của bạn, chúng tôi sẽ</p>
+                <b>đề xuất giải pháp và lộ trình triển khai phù hợp.</b>
+              </div>
+              <div className="text-white/90 text-lg mb-8 max-w-xl text-balance text-shadow mt-4">
+                <p className="flex items-center gap-2"><CheckCircle size={20} /> Phân tích nhu cầu</p>
+                <p className="py-3 flex items-center gap-2"><CheckCircle size={20} /> Đề xuất giải pháp phù hợp</p>
+                <p className="flex items-center gap-2"><CheckCircle size={20} /> Uớc lượng thời gian triển khai</p>
+              </div>
 
-              <button className="inline-flex items-center cursor-pointer gap-2 px-8 py-4 bg-gradient-to-r from-cyan-300 to-teal-300 text-blue-900 font-bold rounded-full hover:shadow-xl hover:shadow-cyan-400/50 transition-all transform hover:scale-105">
+              <button onClick={handleClick} className="inline-flex items-center cursor-pointer gap-2 px-8 py-4 bg-gradient-to-r from-cyan-300 to-teal-300 text-blue-900 font-bold rounded-full hover:shadow-xl hover:shadow-cyan-400/50 transition-all transform hover:scale-105">
                 <span>Nhận tư vấn ngay</span>
-                <ArrowRight size={20} />
+                <ChevronRight size={20} />
               </button>
             </div>
 
-            <div className="absolute top-0 right-0 opacity-10 h-full w-[250px] md:block hidden">
+            <div className="absolute top-1/3 -translate-y-1/2 right-0 opacity-80 w-[300px] md:block hidden">
               <Image
-                src={CTABannerImage}
+                src={ImageCTA}
                 alt="CTA Banner"
-                width={300}
-                height={300}
+                width={500}
+                height={500}
                 loading="lazy"
               />
             </div>
           </div>
         </div>
       </div>
-    </section>
-  )
+    </section >
+  );
 }

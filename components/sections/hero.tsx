@@ -1,6 +1,6 @@
-import React from 'react'
 import Image from 'next/image'
 import { ArrowRight, Play } from 'lucide-react'
+import { scrollToSection } from '@/components/utils/scrollToSection'
 
 export default function Hero() {
   return (
@@ -31,11 +31,19 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 items-center justify-center">
-            <button className="custom-btn-bg-gradient transition-all transform hover:scale-105 px-8 h-[54px] text-white font-semibold rounded-full flex items-center justify-center gap-2 cursor-pointer">
+            <button
+              type="button"
+              onClick={() => scrollToSection('contact', 80)}
+              className="custom-btn-bg-gradient transition-all transform hover:scale-105 px-8 h-[54px] text-white font-semibold rounded-full flex items-center justify-center gap-2 cursor-pointer"
+            >
               Nhận báo giá dự án
               <ArrowRight size={20} />
             </button>
-            <button className="px-8 py-3 border-2 cursor-pointer border-cyan-400 text-cyan-300 font-semibold rounded-full hover:bg-cyan-400/10 transition-colors flex items-center justify-center gap-2">
+            <button
+              type="button"
+              onClick={() => scrollToSection('workflow', 80)}
+              className="px-8 py-3 border-2 cursor-pointer border-cyan-400 text-cyan-300 font-semibold rounded-full hover:bg-cyan-400/10 transition-colors flex items-center justify-center gap-2"
+            >
               <Play size={20} /> Xem quy trình
             </button>
           </div>

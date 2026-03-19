@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import Navbar from '@/components/sections/navbar'
 import Hero from '@/components/sections/hero'
 import Services from '@/components/sections/services'
@@ -9,6 +9,7 @@ import Certificates from '@/components/sections/certificates'
 import Contact from '@/components/sections/contact'
 import CTABanner from '@/components/sections/cta-banner'
 import Footer from '@/components/sections/footer'
+import ScrollToTopButton from '@/components/sections/scroll-to-top'
 
 export default function Home() {
   return (
@@ -23,6 +24,7 @@ export default function Home() {
       <Contact />
       <CTABanner />
       <Footer />
+      <ScrollToTopButton />
     </main>
   )
 }
