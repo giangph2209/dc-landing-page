@@ -25,9 +25,6 @@ export default function Footer() {
             <p className="text-sm text-[#64748B] leading-relaxed">
               DCSoftware cung cấp giải pháp phần mềm, outsourcing và dịch vụ số cho doanh nghiệp.
             </p>
-            <p className="text-sm text-[#64748B] leading-relaxed pr-2">
-              Mã số doanh nghiệp: 0110948414
-            </p>
             <div className="flex gap-3 pt-2">
               <a
                 href="#"
