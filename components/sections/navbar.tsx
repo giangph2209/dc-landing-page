@@ -1,6 +1,8 @@
+'use client'
 import React from 'react'
 import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
+import { scrollToSection } from '@/components/utils/scrollToSection'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -16,19 +18,31 @@ export default function Navbar() {
       const scrollY = window.scrollY
       setIsScrolled(scrollY > 0)
 
-      const offset = 120
-      let current = 'hero'
+      const viewportMiddle = scrollY + window.innerHeight / 2
+
+      let bestSection = 'hero'
+      let smallestDistance = Number.POSITIVE_INFINITY
 
       for (const id of sectionIds) {
         const el = document.getElementById(id)
         if (!el) continue
-        const top = el.offsetTop - offset
-        if (scrollY >= top) {
-          current = id
+
+        const rect = el.getBoundingClientRect()
+        const sectionTop = rect.top + scrollY
+        const sectionBottom = rect.bottom + scrollY
+        const sectionMiddle = (sectionTop + sectionBottom) / 2
+
+        const distance = Math.abs(sectionMiddle - viewportMiddle)
+
+        const isIntersecting = sectionBottom > scrollY && sectionTop < scrollY + window.innerHeight
+
+        if (isIntersecting && distance < smallestDistance) {
+          smallestDistance = distance
+          bestSection = id
         }
       }
 
-      setActiveSection(current)
+      setActiveSection(bestSection)
       ticking = false
     }
 
@@ -45,12 +59,7 @@ export default function Navbar() {
   }, [])
 
   const handleScrollTo = (id: string) => {
-    const el = document.getElementById(id)
-    if (!el) return
-
-    const offset = 80
-    const top = el.getBoundingClientRect().top + window.scrollY - offset
-    window.scrollTo({ top, behavior: 'smooth' })
+    scrollToSection(id, 80)
     setIsOpen(false)
   }
 
@@ -133,10 +142,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => handleScrollTo('contact')}
-            className={`px-6 py-2 cursor-pointer text-[16px] font-semibold rounded-full transition-colors shadow-lg hover:shadow-cyan-400/50 ${isScrolled
-              ? 'bg-[#0B3AA9] text-white hover:bg-primary-2'
-              : 'bg-cyan-400 text-slate-900 hover:bg-cyan-300'
-              }`}
+            className={`bg-gradient-to-r text-white font-semibold from-[#6BF2C6] to-[#279AE7] px-6 py-2 cursor-pointer text-[16px] rounded-full`}
           >
             Liên hệ
           </button>

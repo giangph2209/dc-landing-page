@@ -4,10 +4,9 @@ export async function POST(req: Request) {
   try {
     const data = await req.json()
 
-    // Validate required fields
     if (!data.name || !data.phone || !data.email || !data.serviceType) {
       return NextResponse.json(
-        { success: false, statusCode: 400, message: 'Missing required fields' },
+        { success: false, statusCode: 400, message: 'Vui lòng điền đầy đủ thông tin' },
         { status: 200 }
       )
     }
@@ -17,14 +16,13 @@ export async function POST(req: Request) {
 
     if (!GOOGLE_SCRIPT_BASE_URL || !GOOGLE_SCRIPT_ID) {
       return NextResponse.json(
-        { success: false, statusCode: 500, message: 'Server config error' },
+        { success: false, statusCode: 500, message: 'Có lỗi xảy ra, vui lòng thử lại sau' },
         { status: 200 }
       )
     }
 
     const GOOGLE_SCRIPT_URL = `${GOOGLE_SCRIPT_BASE_URL}/${GOOGLE_SCRIPT_ID}/exec`
 
-    // Gửi data sang Google Sheet
     const sheetRes = await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
       headers: {
@@ -47,12 +45,11 @@ export async function POST(req: Request) {
     return NextResponse.json({
       success: true,
       statusCode: 201,
-      message: 'Saved to Google Sheet',
+      message: 'Đã gửi yêu cầu, chúng tôi sẽ phản hồi sớm nhất',
     }, { status: 200 })
   } catch (error) {
-    console.error(error)
     return NextResponse.json(
-      { success: false, statusCode: 500, message: 'Server error' },
+      { success: false, statusCode: 500, message: 'Có lỗi xảy ra, vui lòng thử lại sau' },
       { status: 200 }
     )
   }
