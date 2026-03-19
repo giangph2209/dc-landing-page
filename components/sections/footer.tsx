@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { MailIcon, PhoneIcon } from 'lucide-react'
 import { MapPinIcon } from 'lucide-react'
+import { FooterMap } from '@/components/sections/footer-map'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -24,8 +25,8 @@ export default function Footer() {
             <p className="text-sm text-[#64748B] leading-relaxed">
               DCSoftware cung cấp giải pháp phần mềm, outsourcing và dịch vụ số cho doanh nghiệp.
             </p>
-            <p className="text-xs text-[#94A3B8] leading-relaxed pr-2">
-              Mã số doanh nghiệp: 0110948414 do Sở Kế hoạch và Đầu tư Thành phố Hà Nội cấp lần đầu ngày 18/12/2024.
+            <p className="text-sm text-[#64748B] leading-relaxed pr-2">
+              Mã số doanh nghiệp: 0110948414
             </p>
             <div className="flex gap-3 pt-2">
               <a
@@ -119,17 +120,7 @@ export default function Footer() {
               </li>
             </ul>
 
-            <div className="mt-3 overflow-hidden rounded-xl border border-[#E2E8F0] bg-white shadow-sm">
-              <div className="relative w-full pt-[40%]">
-                <iframe
-                  title="DCSoftware Location"
-                  src="https://www.google.com/maps?q=Tầng%2018%20Tòa%20nhà%20CEO%20Lô%20HH2-1%20KĐT%20Mễ%20Trì%20Hạ,%20Đường%20Phạm%20Hùng,%20Phường%20Từ%20Liêm,%20Hà%20Nội,%20Việt%20Nam&output=embed"
-                  className="absolute inset-0 h-full w-full"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-            </div>
+            <FooterMap />
           </div>
         </div>
       </div>
