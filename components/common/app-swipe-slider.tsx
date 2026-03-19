@@ -41,15 +41,17 @@ export function TwoRowSlider({
         setItemsPerRow(itemsPerRowConfig.sm);
       } else if (window.innerWidth < 1024) {
         setItemsPerRow(itemsPerRowConfig.md);
-      } else {
+      } else if (window.innerWidth < 1280) {
         setItemsPerRow(itemsPerRowConfig.lg);
+      } else {
+        setItemsPerRow(itemsPerRowConfig.xl);
       }
     };
 
     updateItems();
     window.addEventListener("resize", updateItems);
     return () => window.removeEventListener("resize", updateItems);
-  }, [itemsPerRowConfig.sm, itemsPerRowConfig.md, itemsPerRowConfig.lg]);
+  }, [itemsPerRowConfig.sm, itemsPerRowConfig.md, itemsPerRowConfig.lg, itemsPerRowConfig.xl]);
 
   const maxIndex = Math.max(0, columns.length - itemsPerRow);
 
