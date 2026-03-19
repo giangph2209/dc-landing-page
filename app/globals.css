@@ -169,7 +169,7 @@
 }
 
 .custom-blur {
-  @media (max-width: 1080px) {
+  @media (max-width: 1440px) {
     position: relative;
 
     &::before {

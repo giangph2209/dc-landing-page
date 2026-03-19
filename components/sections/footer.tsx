@@ -25,7 +25,7 @@ export default function Footer() {
               DCSoftware cung cấp giải pháp phần mềm, outsourcing và dịch vụ số cho doanh nghiệp.
             </p>
             <p className="text-xs text-[#94A3B8] leading-relaxed pr-2">
-              Mã số doanh nghiệp: 0110917293 do Sở Kế hoạch và Đầu tư Thành phố Hà Nội cấp lần đầu ngày 18/12/2024.
+              Mã số doanh nghiệp: 0110948414 do Sở Kế hoạch và Đầu tư Thành phố Hà Nội cấp lần đầu ngày 18/12/2024.
             </p>
             <div className="flex gap-3 pt-2">
               <a
@@ -70,13 +70,13 @@ export default function Footer() {
 
           <div className="space-y-3 col-span-1">
             <h4 className="text-sm font-semibold text-[#0B1F4A] uppercase tracking-wide">
-              Phát triển ứng dụng
+              Mô hình hợp tác
             </h4>
             <ul className="space-y-2 text-sm text-[#475569]">
-              <li>Web Development</li>
-              <li>Mobile App</li>
-              <li>DevOps & Cloud</li>
-              <li>360/3D</li>
+              <li>Triển khai toàn bộ dự án</li>
+              <li>Nhân sự theo tháng/dự án</li>
+              <li>Kết hợp kinh doanh</li>
+              <li>Tư vấn</li>
             </ul>
           </div>
 

@@ -86,7 +86,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 py-[18px] flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2" onClick={() => handleScrollTo('hero')}>
           <Image
             src={isScrolled ? '/images/logo-black.png' : '/images/logo.png'}
             alt="Logo"
@@ -142,7 +142,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => handleScrollTo('contact')}
-            className={`bg-gradient-to-r text-white font-semibold from-[#6BF2C6] to-[#279AE7] px-6 py-2 cursor-pointer text-[16px] rounded-full`}
+            className={`bg-gradient-to-r transition-all transform hover:scale-105 text-white font-semibold from-[#6BF2C6] to-[#279AE7] px-6 py-2 cursor-pointer text-[16px] rounded-full`}
           >
             Liên hệ
           </button>

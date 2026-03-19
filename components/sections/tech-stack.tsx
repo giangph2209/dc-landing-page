@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { TwoRowSlider } from "@/components/common/app-swipe-slider";
 import TechnicalStackImage from "@/public/images/technicals/background.png";
 import AWSImage from "@/public/icons/technicals/aws-icon.png";
 import GoogleCloudImage from "@/public/icons/technicals/google-cloud-icon.png";
@@ -35,14 +36,8 @@ const techs = [
   { name: "Flutter", icon: FlutterImage },
 ];
 
-const techColumns = Array.from(
-  { length: Math.ceil(techs.length / 2) },
-  (_, index) => techs.slice(index * 2, index * 2 + 2),
-);
-
 export default function TechStack() {
   const [isShow, setIsShow] = useState(false);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerRow, setItemsPerRow] = useState(5);
 
   const sectionRef = React.useRef(null);
@@ -81,14 +76,30 @@ export default function TechStack() {
     return () => window.removeEventListener("resize", updateItems);
   }, []);
 
-  const maxIndex = Math.max(0, techColumns.length - itemsPerRow);
-
-  useEffect(() => {
-    setCurrentIndex((prev) => Math.min(prev, maxIndex));
-  }, [maxIndex]);
-
-  const cardWidthPercent = 100 / itemsPerRow;
-  const totalDots = maxIndex + 1;
+  const columns = React.useMemo(
+    () =>
+      Array.from(
+        { length: Math.ceil(techs.length / 2) },
+        (_, index) =>
+          techs.slice(index * 2, index * 2 + 2).map((tech) => (
+            <div
+              key={tech.name}
+              className="flex items-center justify-center p-3 group cursor-pointer rounded-2xl bg-white/70 backdrop-blur shadow-custom hover:shadow-lg transition-all"
+            >
+              <Image
+                src={tech.icon}
+                alt={tech.name}
+                width={80}
+                height={80}
+                loading="lazy"
+                draggable={false}
+                className="object-contain group-hover:scale-110 transition-all duration-300"
+              />
+            </div>
+          )),
+      ),
+    [],
+  );
 
   return (
     <section
@@ -96,7 +107,7 @@ export default function TechStack() {
       ref={sectionRef}
       className="bg-linear-to-b from-white via-blue-100 to-blue-50 relative overflow-hidden"
     >
-      <div className="pt-15 lg:pb-0 pb-15">
+      <div className="pt-15 xl:pb-0 pb-15">
         <div className="max-w-7xl mx-auto px-6 clear-both">
           <h2 className="text-4xl font-bold text-primary lg:mb-[60px] mb-10 text-center">
             Năng lực kỹ thuật
@@ -133,63 +144,22 @@ export default function TechStack() {
                   className="object-contain"
                 />
               </div>
-              <div className="col-span-2 relative">
+              <div className="col-span-2 relative overflow-x-hidden">
                 <h3 className="text-4xl text-primary mb-4 ml-2">
                   Công nghệ chúng tôi sử dụng
                 </h3>
-                <div className="overflow-hidden py-4">
-                  <div
-                    className="will-change-transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                    style={{
-                      transform: `translate3d(-${currentIndex * cardWidthPercent}%, 0, 0)`,
-                    }}
-                  >
-                    <div className="flex">
-                      {techColumns.map((column, colIndex) => (
-                        <div
-                          key={colIndex}
-                          className="px-2 flex-shrink-0"
-                          style={{ width: `${cardWidthPercent}%` }}
-                        >
-                          <div className="flex flex-col gap-4">
-                            {column.map((tech, rowIdx) => (
-                              <div
-                                key={`${colIndex}-${rowIdx}-${tech.name}`}
-                                className="flex items-center justify-center p-3 group cursor-pointer rounded-2xl bg-white/70 backdrop-blur shadow-custom hover:shadow-lg transition-all"
-                              >
-                                <Image
-                                  src={tech.icon}
-                                  alt={tech.name}
-                                  width={80}
-                                  height={80}
-                                  loading="lazy"
-                                  className="object-contain group-hover:scale-110 transition-all duration-300"
-                                />
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                <div className="flex justify-start gap-3 mt-4 ml-4">
-                  {Array.from({ length: totalDots }).map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentIndex(index)}
-                      className={`h-3 rounded-full transition-all duration-300 ${index === currentIndex
-                        ? "bg-blue-500 w-8"
-                        : "bg-gray-300 hover:bg-gray-400 w-3"
-                        }`}
-                      aria-label={`Go to slide ${index + 1}`}
-                    />
-                  ))}
+                <div className="py-4">
+                  <TwoRowSlider
+                    columns={columns}
+                    itemsPerRowConfig={{ sm: 1, md: 3, lg: 3, xl: 4 }}
+                    columnClassName="px-2 shrink-0"
+                    dotsAlign="start"
+                  />
                 </div>
               </div>
             </div>
           </div>
-          <div className="py-[48px] rounded-[24px] lg:translate-y-[-110px] custom-employee-box lg:w-[75%] lg:float-right mt-6 w-full relative z-10 mx-auto">
+          <div className="py-[48px] rounded-[24px] xl:translate-y-[-110px] custom-employee-box lg:w-[75%] xl:float-right mt-6 w-full relative z-10 mx-auto">
             <h3 className="md:text-4xl text-3xl text-center text-primary ">
               Nguồn lực của chúng tôi
             </h3>
@@ -207,7 +177,7 @@ export default function TechStack() {
               </div>
               <div>
                 <div className="md:text-6xl text-4xl custom-text-gradient align-top">
-                  20+ Years
+                  20+
                 </div>
                 <p className="text-primary mt-3">
                   Combined <br />
