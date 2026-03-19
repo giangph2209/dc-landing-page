@@ -26,7 +26,7 @@ export function TwoRowSlider({
   dotsAlign = "center",
 }: TwoRowSliderProps) {
   const [currentIndex, setCurrentIndex] = React.useState(0);
-  const [itemsPerRow, setItemsPerRow] = React.useState(itemsPerRowConfig.lg);
+  const [itemsPerRow, setItemsPerRow] = React.useState(itemsPerRowConfig.xl);
   const [dragOffset, setDragOffset] = React.useState(0);
   const [isPointerDragging, setIsPointerDragging] = React.useState(false);
 
