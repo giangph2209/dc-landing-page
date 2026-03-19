@@ -36,6 +36,19 @@ export function FooterMap() {
           allowFullScreen
         />
       </div>
+      <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[#E2E8F0] bg-[#F8FAFC] px-3 py-2">
+        <p className="text-xs text-[#64748B]">
+          {useGoogleEmbed ? "Google Maps" : "Bản đồ OpenStreetMap"}
+        </p>
+        <a
+          href={GOOGLE_MAPS_OPEN_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs font-medium text-[#0B63E5] hover:underline"
+        >
+          Mở trong Google Maps →
+        </a>
+      </div>
     </div>
   );
 }
