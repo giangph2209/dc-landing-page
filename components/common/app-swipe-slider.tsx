@@ -25,7 +25,7 @@ export function TwoRowSlider({
   columnClassName = "",
   dotsAlign = "center",
 }: TwoRowSliderProps) {
-  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const [currentPage, setCurrentPage] = React.useState(0);
   const [itemsPerRow, setItemsPerRow] = React.useState(itemsPerRowConfig.xl);
   const [dragOffset, setDragOffset] = React.useState(0);
   const [isPointerDragging, setIsPointerDragging] = React.useState(false);
@@ -33,7 +33,6 @@ export function TwoRowSlider({
   const pointerStartXRef = React.useRef<number | null>(null);
   const trackRef = React.useRef<HTMLDivElement | null>(null);
   const trackWidthRef = React.useRef<number>(0);
-  const pointerStartTimeRef = React.useRef<number>(0);
 
   React.useEffect(() => {
     const updateItems = () => {
@@ -53,48 +52,35 @@ export function TwoRowSlider({
     return () => window.removeEventListener("resize", updateItems);
   }, [itemsPerRowConfig.sm, itemsPerRowConfig.md, itemsPerRowConfig.lg, itemsPerRowConfig.xl]);
 
-  const maxIndex = Math.max(0, columns.length - itemsPerRow);
+  /** Mỗi trang = itemsPerRow cột; số trang */
+  const numPages =
+    columns.length === 0 ? 0 : Math.ceil(columns.length / itemsPerRow);
 
   React.useEffect(() => {
-    setCurrentIndex((prev) => Math.min(prev, maxIndex));
-  }, [maxIndex]);
+    setCurrentPage((p) => Math.min(p, Math.max(0, numPages - 1)));
+  }, [numPages]);
 
+  const columnStart = currentPage * itemsPerRow;
   const cardWidthPercent = 100 / itemsPerRow;
   const dragPercent =
     trackWidthRef.current > 0 ? (dragOffset / trackWidthRef.current) * 100 : 0;
-  const translatePercent = currentIndex * cardWidthPercent - dragPercent;
-  const totalDots = maxIndex + 1;
+  const translatePercent = columnStart * cardWidthPercent - dragPercent;
+  const totalDots = numPages;
 
   const endPointerDrag = React.useCallback(
     (clientX: number, pointerId: number) => {
       if (pointerStartXRef.current == null) return;
 
       const deltaX = clientX - pointerStartXRef.current;
-      const now = performance.now();
-      const dt = Math.max(now - pointerStartTimeRef.current, 1); // ms
-      const velocity = deltaX / dt; // px/ms, âm = kéo sang trái
-      const baseThresholdPx = 16;
+      const thresholdPx = 40;
 
-      if (trackWidthRef.current > 0 && Math.abs(deltaX) > baseThresholdPx) {
-        const deltaPercent = (deltaX / trackWidthRef.current) * 100;
-        const deltaColumnsFloat = deltaPercent / cardWidthPercent;
-
-        // boost theo tốc độ: kéo nhanh thì nhảy thêm cột
-        const velocityBoost = Math.min(Math.max(Math.abs(velocity) * 0.8, 0), 2); // 0 -> 2
-        let stepsFloat = Math.abs(deltaColumnsFloat) + velocityBoost;
-        let steps = Math.round(stepsFloat);
-
-        if (steps < 1) steps = 1;
-        if (steps > 6) steps = 6; // giới hạn nhảy tối đa 6 cột/lần
-
-        const direction = deltaColumnsFloat < 0 ? 1 : -1;
-
-        setCurrentIndex((prev) => {
-          const next = prev + direction * steps;
-          if (next < 0) return 0;
-          if (next > maxIndex) return maxIndex;
-          return next;
-        });
+      if (numPages > 1 && trackWidthRef.current > 0 && Math.abs(deltaX) > thresholdPx) {
+        // Vuốt trái (deltaX < 0) → trang sau; vuốt phải → trang trước — mỗi lần chỉ 1 trang
+        if (deltaX < 0) {
+          setCurrentPage((p) => Math.min(p + 1, numPages - 1));
+        } else {
+          setCurrentPage((p) => Math.max(p - 1, 0));
+        }
       }
 
       pointerStartXRef.current = null;
@@ -108,17 +94,17 @@ export function TwoRowSlider({
         // ignore
       }
     },
-    [maxIndex],
+    [numPages],
   );
 
   const onTrackPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
-    // Mouse: chỉ nhận left-click; touch/pen: luôn cho phép để hỗ trợ màn hình cảm ứng (iPad, mobile)
     if (e.pointerType === "mouse" && e.button !== 0) return;
     const track = trackRef.current;
     if (!track) return;
 
+    if (e.pointerType !== "mouse") e.preventDefault();
+
     pointerStartXRef.current = e.clientX;
-    pointerStartTimeRef.current = performance.now();
     trackWidthRef.current = track.getBoundingClientRect().width;
     setDragOffset(0);
     setIsPointerDragging(true);
@@ -133,7 +119,8 @@ export function TwoRowSlider({
   const onTrackPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (pointerStartXRef.current == null) return;
     const deltaX = e.clientX - pointerStartXRef.current;
-    if (Math.abs(deltaX) > 2) {
+    const dragThreshold = e.pointerType === "mouse" ? 2 : 1;
+    if (Math.abs(deltaX) > dragThreshold) {
       e.preventDefault();
       setDragOffset(deltaX);
     }
@@ -197,12 +184,13 @@ export function TwoRowSlider({
           {Array.from({ length: totalDots }).map((_, index) => (
             <button
               key={index}
-              onClick={() => setCurrentIndex(index)}
-              className={`h-3 rounded-full transition-all duration-300 ${index === currentIndex
+              type="button"
+              onClick={() => setCurrentPage(index)}
+              className={`h-3 rounded-full transition-all duration-300 ${index === currentPage
                 ? "bg-blue-500 w-8"
                 : "bg-gray-300 hover:bg-gray-400 w-3"
                 }`}
-              aria-label={`Go to slide ${index + 1}`}
+              aria-label={`Trang ${index + 1}`}
             />
           ))}
         </div>
@@ -210,4 +198,3 @@ export function TwoRowSlider({
     </div>
   );
 }
-
