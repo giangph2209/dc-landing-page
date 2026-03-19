@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex items-center xl:h-screen h-[600px] md:h-[800px] overflow-hidden custom-blur"
+      className="relative flex items-center xl:h-screen h-[500px] md:h-[800px] overflow-hidden custom-blur"
     >
       <Image
         src="/images/hero-banner.jpg"
@@ -19,14 +19,14 @@ export default function Hero() {
 
       <div className="px-6 z-10 text-center xl:w-1/2 w-full absolute left-1/2 -translate-x-1/2 top-1/5">
         <div className="text-white w-full">
-          <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-balance">
+          <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold mb-3 leading-tight text-balance">
             Đối tác triển khai
             <br />
             <span className="bg-gradient-to-r from-cyan-300 via-blue-300 to-cyan-200 bg-clip-text text-transparent">
               Phần mềm tin cậy
             </span>
           </h1>
-          <p className="text-gray-300 md:text-lg mb-8 leading-relaxed">
+          <p className="text-gray-300 md:text-lg mb-6 leading-relaxed">
             Quy trình rõ ràng - Trải nghiệm khách hàng - Hỗ trợ tận tâm
           </p>
 

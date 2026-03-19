@@ -5,10 +5,42 @@ import Link from "next/link";
 
 const projects = [
   {
+    id: 8,
+    title: "Face Recognition System",
+    description:
+      "Xây dựng module xử lý nhận diện khuôn mặt cho nhân viên trong công ty",
+    tags: ["Nhận diện khuôn mặt", "AI", "Tự động hóa"],
+    image: "/images/projects/image-8.jpg",
+  },
+  {
+    id: 5,
+    title: "Website bán hàng viễn thông",
+    description:
+      "Tạo website bán các mặt hàng viễn thông như SIM, gói data, thiết bị,... tích hợp thanh toán qua ví điện tử",
+    tags: ["Bán hàng", "Viễn thông", "Ví điện tử"],
+    image: "/images/projects/image-5.jpg",
+  },
+  {
+    id: 7,
+    title: "Code Pipeline Tool for Developer",
+    description:
+      "Create pipeline tool để có thể CI/CD tự động cho developer và DevOps",
+    tags: ["DevOps Tool", "Technical", "Code Pipeline"],
+    image: "/images/projects/image-7.jpg",
+  },
+  {
+    id: 6,
+    title: "Monitoring System",
+    description:
+      "Hệ thống giám sát và cảnh báo cho hạ tầng và ứng dụng",
+    tags: ["Monitoring", "Infra", "Maintainance"],
+    image: "/images/projects/image-6.jpg",
+  },
+  {
     id: 1,
     title: "Landing Page Customizable",
     description:
-      "Cấu hình giao diện landing page động thông qua hệ thống CMS quản trị",
+      "Config giao diện landing page động từ trong trang quản trị CMS",
     tags: ["Landing Page", "Configuration", "Website"],
     image: "/images/projects/image-1.jpg",
   },
@@ -16,15 +48,15 @@ const projects = [
     id: 2,
     title: "Code Artifact Tool for Developer",
     description:
-      "Xây dựng hệ thống lưu trữ và quản lý artifact (pull/push) cho developer và DevOps",
-    tags: ["Code Artifact", "DevOps", "Technical"],
+      "Tạo nơi lưu trữ (pull/push) artifact cho developer và DevOps",
+    tags: ["Code Artifact", "Technical", "DevOps Tool"],
     image: "/images/projects/image-2.jpg",
   },
   {
     id: 3,
     title: "Code Deployment Tool for Developer",
     description:
-      "Xây dựng hệ thống deployment tự động hỗ trợ developer và DevOps",
+      "Tạo hệ thống deployment tự động cho developer và DevOps",
     tags: ["Code Deploy", "DevOps Tool", "Technical"],
     image: "/images/projects/image-3.png",
   },
@@ -32,39 +64,9 @@ const projects = [
     id: 4,
     title: "Lambda System for Developers",
     description:
-      "Phát triển hệ thống cho phép chạy function tương tự AWS Lambda",
-    tags: ["Lambda Function", "Serverless", "DevOps"],
+      "Cho phép người dùng sử dụng function tương tự Lambda function trên AWS",
+    tags: ["Lamda function", "developers", "DevOps"],
     image: "/images/projects/image-4.jpg",
-  },
-  {
-    id: 5,
-    title: "Website bán hàng viễn thông",
-    description:
-      "Xây dựng website bán SIM, gói data và thiết bị viễn thông, tích hợp thanh toán ví điện tử",
-    tags: ["E-commerce", "Telecom", "E-wallet"],
-    image: "/images/projects/image-5.jpg",
-  },
-  {
-    id: 6,
-    title: "Monitoring System",
-    description: "Hệ thống giám sát và cảnh báo cho hạ tầng và ứng dụng",
-    tags: ["Monitoring", "Infrastructure", "Maintenance"],
-    image: "/images/projects/image-6.jpg",
-  },
-  {
-    id: 7,
-    title: "CI/CD Pipeline Tool",
-    description: "Xây dựng công cụ pipeline hỗ trợ CI/CD tự động cho developer",
-    tags: ["CI/CD", "DevOps Tool", "Automation"],
-    image: "/images/projects/image-7.jpg",
-  },
-  {
-    id: 8,
-    title: "Face Recognition System",
-    description:
-      "Xây dựng module nhận diện khuôn mặt cho nhân viên trong công ty",
-    tags: ["AI", "Face Recognition", "Automation"],
-    image: "/images/projects/image-8.jpg",
   },
 ];
 
@@ -118,8 +120,8 @@ export default function Projects() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-100 rounded-full blur-3xl opacity-20 -z-10"></div>
         <div className="max-w-7xl mx-auto relative">
           <div className="text-center">
-            <h3 className="text-xl text-center text-primary pb-4">
-              Dự án đã thực hiện
+            <h3 className="inline-block px-4 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4">
+              DỰ ÁN ĐÃ THỰC HIỆN
             </h3>
             <h2 className="text-4xl font-bold text-primary">
               Một số dự án tiêu biểu
@@ -144,7 +146,7 @@ export default function Projects() {
                     className="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4"
                   >
                     <div className="rounded-2xl cursor-pointer transition-all p-4 h-full group shadow-custom custom-card-shadow custom-card-shadow-hover">
-                      <div className="relative w-full aspect-video overflow-hidden">
+                      <div className="relative w-full aspect-video overflow-hidden rounded-2xl">
                         <Image
                           src={project.image}
                           alt={project.title}
@@ -191,11 +193,10 @@ export default function Projects() {
               <button
                 onClick={prevSlide}
                 disabled={isAnimating}
-                className={`absolute lg:left-[15px] left-[30px] top-1/2 -translate-y-1/2 -translate-x-6 z-10 text-white rounded-full p-3 custom-btn-bg-gradient ${
-                  isAnimating
-                    ? "opacity-60 cursor-not-allowed"
-                    : "cursor-pointer"
-                }`}
+                className={`absolute lg:left-[15px] left-[30px] top-1/2 -translate-y-1/2 -translate-x-6 z-10 text-white rounded-full p-3 custom-btn-bg-gradient ${isAnimating
+                  ? "opacity-60 cursor-not-allowed"
+                  : "cursor-pointer"
+                  }`}
               >
                 <ChevronLeft size={20} />
               </button>
@@ -205,11 +206,10 @@ export default function Projects() {
               <button
                 onClick={nextSlide}
                 disabled={isAnimating}
-                className={`absolute lg:right-[15px] right-[30px] top-1/2 -translate-y-1/2 translate-x-6 z-10 text-white rounded-full p-3 custom-btn-bg-gradient ${
-                  isAnimating
-                    ? "opacity-60 cursor-not-allowed"
-                    : "cursor-pointer"
-                }`}
+                className={`absolute lg:right-[15px] right-[30px] top-1/2 -translate-y-1/2 translate-x-6 z-10 text-white rounded-full p-3 custom-btn-bg-gradient ${isAnimating
+                  ? "opacity-60 cursor-not-allowed"
+                  : "cursor-pointer"
+                  }`}
               >
                 <ChevronRight size={20} />
               </button>
@@ -221,11 +221,10 @@ export default function Projects() {
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}
-              className={`h-3 rounded-full transition-all duration-300 ${
-                index === currentIndex
-                  ? "bg-blue-500 w-8"
-                  : "bg-gray-300 hover:bg-gray-400 w-3"
-              }`}
+              className={`h-3 rounded-full transition-all duration-300 ${index === currentIndex
+                ? "bg-blue-500 w-8"
+                : "bg-gray-300 hover:bg-gray-400 w-3"
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

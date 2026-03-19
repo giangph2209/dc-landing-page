@@ -148,7 +148,7 @@ export default function Contact() {
               <div className="space-y-4">
                 {/* Phone */}
                 <a
-                  href="tel:+84966868888"
+                  href="tel:+84349964332"
                   className="flex items-center gap-4 p-4 bg-gradient-to-r from-[#0B63E5] to-[#279AE7] text-white rounded-xl hover:shadow-lg transition-all group"
                 >
                   <PhoneIcon size={30} />
@@ -160,7 +160,7 @@ export default function Contact() {
 
                 {/* Email/Chat */}
                 <a
-                  href="mailto:info@example.com"
+                  href="mailto:digitalcenturysoftware@gmail.com"
                   className="flex items-center gap-4 p-4 bg-white text-primary rounded-xl hover:shadow-lg transition-all group"
                 >
                   <MailIcon size={30} />

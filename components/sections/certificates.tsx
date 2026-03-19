@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { TwoRowSlider } from "@/components/common/app-swipe-slider";
 import AWSImage from "@/public/images/certificates/aws.png";
 import GoogleCloudImage from "@/public/images/certificates/google.png";
 import JavaImage from "@/public/images/certificates/java.png";
@@ -85,56 +85,42 @@ const certificates = [
   },
 ];
 
-const certificateColumns = Array.from(
-  { length: Math.ceil(certificates.length / 2) },
-  (_, index) => certificates.slice(index * 2, index * 2 + 2),
-);
-
 export default function Certificates() {
-  const [currentIndex, setCurrentIndex] = React.useState(0);
-  const [itemsPerRow, setItemsPerRow] = React.useState(4);
-  const [isAnimating, setIsAnimating] = React.useState(false);
+  const columns = React.useMemo(
+    () =>
+      Array.from(
+        { length: Math.ceil(certificates.length / 2) },
+        (_, index) =>
+          certificates.slice(index * 2, index * 2 + 2).map((cert) => (
+            <div
+              key={cert.name}
+              className={`bg-white cursor-pointer rounded-2xl flex flex-col items-center justify-center text-center shadow-lg hover:shadow-xl transition-all border-b-2 custom-card-shadow-hover ${cert.borderColor || "border-[#055FD1]"
+                }`}
+              title={cert.description}
+            >
+              <div className="py-5 items-center justify-center flex h-[200px] pointer-events-none">
+                <Image
+                  src={cert.image}
+                  alt={cert.description}
+                  width={180}
+                  height={100}
+                  loading="lazy"
+                  draggable={false}
+                />
+              </div>
+              <div className="border-t border-gray-200 w-full p-3">
+                <p className="font-semibold text-gray-900">{cert.name}</p>
+              </div>
+            </div>
+          )),
+      ),
+    [],
+  );
 
-  React.useEffect(() => {
-    const updateItems = () => {
-      if (window.innerWidth <= 768) {
-        setItemsPerRow(1);
-      } else if (window.innerWidth <= 1024) {
-        setItemsPerRow(3);
-      } else {
-        setItemsPerRow(4);
-      }
-    };
-
-    updateItems();
-    window.addEventListener("resize", updateItems);
-    return () => window.removeEventListener("resize", updateItems);
-  }, []);
-
-  const maxIndex = Math.max(0, certificateColumns.length - itemsPerRow);
-
-  React.useEffect(() => {
-    setCurrentIndex((prev) => Math.min(prev, maxIndex));
-  }, [maxIndex]);
-
-  const handleNext = () => {
-    if (isAnimating || currentIndex >= maxIndex) return;
-    setIsAnimating(true);
-    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
-  };
-
-  const handlePrev = () => {
-    if (isAnimating || currentIndex <= 0) return;
-    setIsAnimating(true);
-    setCurrentIndex((prev) => Math.max(prev - 1, 0));
-  };
-
-  const cardWidthPercent = 100 / itemsPerRow;
-  const totalDots = maxIndex + 1;
   return (
     <section id="certificates" className="bg-[#F6F7FB]">
-      <div className="pt-15 lg:pb-0 pb-15">
-        <div className="max-w-7xl mx-auto px-6">
+      <div className="py-15">
+        <div className="max-w-7xl mx-auto px-6 overflow-x-hidden">
           {/* Header */}
           <div className="text-center">
             <h2 className="text-4xl font-bold text-primary">
@@ -171,66 +157,13 @@ export default function Certificates() {
             ))}
           </div>
 
-          <div className="hidden md:block">
-            <div className="relative">
-              <div className="overflow-hidden pt-16 pb-15">
-                <div
-                  className="space-y-4 will-change-transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                  style={{
-                    transform: `translate3d(-${currentIndex * cardWidthPercent}%, 0, 0)`,
-                  }}
-                  onTransitionEnd={() => setIsAnimating(false)}
-                >
-                  <div className="flex">
-                    {certificateColumns.map((column, colIndex) => (
-                      <div
-                        key={colIndex}
-                        className="px-3 flex-shrink-0"
-                        style={{ width: `${cardWidthPercent}%` }}
-                      >
-                        <div className="flex flex-col gap-4 h-full">
-                          {column.map((cert, rowIdx) => (
-                            <div
-                              key={`${colIndex}-${rowIdx}-${cert.name}`}
-                              className={`bg-white cursor-pointer rounded-2xl flex flex-col items-center justify-center text-center shadow-lg hover:shadow-xl hover:scale-105 transition-all border-b-2 custom-card-shadow-hover ${cert.borderColor || "border-[#055FD1]"}`}
-                              title={cert.description}
-                            >
-                              <div className="py-5 items-center justify-center flex h-[200px]">
-                                <Image
-                                  src={cert.image}
-                                  alt={cert.description}
-                                  width={180}
-                                  height={100}
-                                  loading="lazy"
-                                />
-                              </div>
-                              <div className="border-t border-gray-200 w-full p-3">
-                                <p className="font-semibold text-gray-900">
-                                  {cert.name}
-                                </p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="flex justify-center gap-3 mt-8">
-                  {Array.from({ length: totalDots }).map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentIndex(index)}
-                      className={`h-3 rounded-full transition-all duration-300 ${index === currentIndex
-                          ? "bg-blue-500 w-8"
-                          : "bg-gray-300 hover:bg-gray-400 w-3"
-                        }`}
-                      aria-label={`Go to slide ${index + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
+          <div className="hidden md:block pt-16 overflow-x-hidden">
+            <TwoRowSlider
+              columns={columns}
+              itemsPerRowConfig={{ sm: 1, md: 3, lg: 3, xl: 4 }}
+              columnClassName="px-4 shrink-0"
+              dotsAlign="center"
+            />
           </div>
         </div>
       </div>

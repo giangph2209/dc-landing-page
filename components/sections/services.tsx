@@ -93,8 +93,8 @@ export default function Services() {
                 <div key={index} className="relative">
                   <div className="absolute top-1 left-0 w-full h-full rounded-[24px] bg-gradient-to-r from-[#055FD1] to-[#00DBF2]" />
                   {/* Icon container with gradient */}
-                  <div className="group cursor-pointer relative custom-card-shadow custom-card-shadow-hover">
-                    <div className="inline-block p-3 group-hover:scale-110 transition-transform">
+                  <div className="group flex flex-col justify-between cursor-pointer h-full relative custom-card-shadow custom-card-shadow-hover">
+                    <div className="inline-block p-3  group-hover:scale-110 transition-transform">
                       <Image
                         src={Icon}
                         alt={service.title}
@@ -102,13 +102,14 @@ export default function Services() {
                         height={80}
                       />
                     </div>
-
-                    <h3 className="text-lg font-bold text-[#122D95] mb-2 px-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm px-2">
-                      {service.description}
-                    </p>
+                    <div className="">
+                      <h3 className="text-lg font-bold text-[#122D95] mb-2 px-2">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm px-2">
+                        {service.description}
+                      </p>
+                    </div>
 
                     {/* Bottom accent dot */}
                     <div className="mt-4 flex items-center gap-2 justify-end">
