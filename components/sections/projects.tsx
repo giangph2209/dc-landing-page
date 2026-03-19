@@ -121,7 +121,7 @@ export default function Projects() {
         <div className="max-w-7xl mx-auto relative">
           <div className="text-center">
             <h3 className="inline-block px-4 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4">
-              Dự án đã thực hiện
+              DỰ ÁN ĐÃ THỰC HIỆN
             </h3>
             <h2 className="text-4xl font-bold text-primary">
               Một số dự án tiêu biểu
@@ -146,7 +146,7 @@ export default function Projects() {
                     className="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4"
                   >
                     <div className="rounded-2xl cursor-pointer transition-all p-4 h-full group shadow-custom custom-card-shadow custom-card-shadow-hover">
-                      <div className="relative w-full aspect-video overflow-hidden">
+                      <div className="relative w-full aspect-video overflow-hidden rounded-2xl">
                         <Image
                           src={project.image}
                           alt={project.title}
