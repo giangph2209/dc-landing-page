@@ -27,7 +27,9 @@ export default function Footer() {
             </p>
             <div className="flex gap-3 pt-2">
               <a
-                href="#"
+                href="https://www.facebook.com/dcsoftware.vn/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Facebook"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white border hover:border-primary-2"
               >
@@ -40,8 +42,10 @@ export default function Footer() {
                 />
               </a>
               <a
-                href="#"
-                aria-label="LinkedIn"
+                href="https://zalo.me/3829922982069770498"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Zalo"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white border hover:border-primary-2"
               >
                 <span className="text-black font-bold text-sm">Zalo</span>
