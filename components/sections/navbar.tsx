@@ -91,8 +91,7 @@ export default function Navbar() {
             alt="Logo"
             width={100}
             height={100}
-            loading="lazy"
-            decoding="async"
+            loading="eager"
             className="w-45"
           />
         </div>
@@ -179,8 +178,6 @@ export default function Navbar() {
                   alt="Logo"
                   width={100}
                   height={100}
-                  loading="lazy"
-                  decoding="async"
                   className="w-45"
                 />
               </div>

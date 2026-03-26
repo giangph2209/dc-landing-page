@@ -140,8 +140,6 @@ export default function Contact() {
                   alt="Connect"
                   width={50}
                   height={50}
-                  loading="lazy"
-                  decoding="async"
                 />
               </h2>
               <p className="text-gray-600 mb-8">

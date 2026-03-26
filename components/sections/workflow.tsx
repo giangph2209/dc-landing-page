@@ -72,8 +72,6 @@ export default function Workflow() {
                       alt={step.title}
                       width={100}
                       height={100}
-                      loading="lazy"
-                      decoding="async"
                     />
                   </div>
                   <h3 className="font-bold text-primary mb-4 text-[18px]">

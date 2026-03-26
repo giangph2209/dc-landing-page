@@ -107,8 +107,6 @@ export default function Certificates() {
                   alt={cert.description}
                   width={180}
                   height={100}
-                  loading="lazy"
-                  decoding="async"
                   draggable={false}
                 />
               </div>
@@ -149,8 +147,6 @@ export default function Certificates() {
                     alt={cert.description}
                     width={160}
                     height={90}
-                    loading="lazy"
-                    decoding="async"
                   />
                 </div>
                 <div className="border-t border-gray-200 w-full p-3">

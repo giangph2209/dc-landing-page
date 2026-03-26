@@ -149,8 +149,6 @@ export default function Projects() {
                         <img
                           src={project.image}
                           alt={project.title}
-                          loading="lazy"
-                          decoding="async"
                           className="h-full w-full object-cover border border-gray-200 group-hover:scale-110 transition-transform"
                         />
                       </div>
