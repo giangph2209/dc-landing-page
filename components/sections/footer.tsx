@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { MailIcon, PhoneIcon } from 'lucide-react'
 import { MapPinIcon } from 'lucide-react'
 import { FooterMap } from '@/components/sections/footer-map'
@@ -13,12 +12,13 @@ export default function Footer() {
           {/* Company */}
           <div className="space-y-3 col-span-2">
             <div className="flex items-center gap-2">
-              <Image
+              <img
                 src="/images/logo-black.png"
                 alt="DC Software logo"
                 width={130}
                 height={130}
                 loading="lazy"
+                decoding="async"
                 className="w-40 h-auto"
               />
             </div>
@@ -33,11 +33,13 @@ export default function Footer() {
                 aria-label="Facebook"
                 className="flex h-10 w-10 items-center justify-center rounded-full bg-white border hover:border-primary-2"
               >
-                <Image
+                <img
                   src="/icons/media/facebook.png"
                   alt="Facebook"
                   width={18}
                   height={18}
+                  loading="lazy"
+                  decoding="async"
                   className="object-contain"
                 />
               </a>

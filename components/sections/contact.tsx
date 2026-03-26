@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { MailIcon, SendIcon, PhoneIcon } from "lucide-react";
-import ConnectIcon from "@/public/images/connect.png";
-import Image from "next/image";
 import {
   SelectContent,
   SelectItem,
@@ -137,7 +135,14 @@ export default function Contact() {
             <div className="col-span-1 lg:col-span-1 md:col-span-1 mb-4">
               <h2 className="text-4xl font-bold text-primary mb-4 flex items-center gap-2">
                 Liên hệ hợp tác
-                <Image src={ConnectIcon} alt="Connect" width={50} height={50} />
+                <img
+                  src="/images/connect.png"
+                  alt="Connect"
+                  width={50}
+                  height={50}
+                  loading="lazy"
+                  decoding="async"
+                />
               </h2>
               <p className="text-gray-600 mb-8">
                 Rất vui vì được trao đổi cùng bạn, Chúng tôi trân trọng với bất

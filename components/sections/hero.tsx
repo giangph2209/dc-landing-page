@@ -13,6 +13,7 @@ export default function Hero() {
         alt="Vn Software - Đối tác triển khai phần mềm tin cậy"
         fill
         priority
+        unoptimized
         sizes="100vw"
         className="object-cover md:blur-none"
       />

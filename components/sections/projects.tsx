@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ArrowRightIcon, ChevronLeft, ChevronRight } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 const projects = [
@@ -147,13 +146,12 @@ export default function Projects() {
                   >
                     <div className="rounded-2xl cursor-pointer transition-all p-4 h-full group shadow-custom custom-card-shadow custom-card-shadow-hover">
                       <div className="relative w-full aspect-video overflow-hidden rounded-2xl">
-                        <Image
+                        <img
                           src={project.image}
                           alt={project.title}
-                          fill
-                          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                           loading="lazy"
-                          className="object-cover border border-gray-200 group-hover:scale-110 transition-transform"
+                          decoding="async"
+                          className="h-full w-full object-cover border border-gray-200 group-hover:scale-110 transition-transform"
                         />
                       </div>
 

@@ -1,100 +1,87 @@
 import React from "react";
-import Image from "next/image";
 import { TwoRowSlider } from "@/components/common/app-swipe-slider";
-import AWSImage from "@/public/images/certificates/aws.png";
-import GoogleCloudImage from "@/public/images/certificates/google.png";
-import JavaImage from "@/public/images/certificates/java.png";
-import MongodbImage from "@/public/images/certificates/mongodb.png";
-import OpenStackImage from "@/public/images/certificates/openstack.png";
-import AcpImage from "@/public/images/certificates/acp.png";
-import N2JapaneseImage from "@/public/images/certificates/n2.png";
-import OciImage from "@/public/images/certificates/oci.png";
-import IistqbImage from "@/public/images/certificates/istqb.jpg";
-import IistqbAdvancedImage from "@/public/images/certificates/istqb-advanced.jpg";
-import UxResearchImage from "@/public/images/certificates/ux.png";
-import UxGoogleDesignImage from "@/public/images/certificates/ux-google.png";
 
 const certificates = [
   {
     name: "Amazon Associate",
-    image: AWSImage,
+    image: "/images/certificates/aws.png",
     description:
       "AWS Certified Associate – chứng nhận kiến thức nền tảng về thiết kế, triển khai và vận hành hệ thống trên Amazon Web Services",
     borderColor: "border-[#ff9a00]",
   },
   {
     name: "Professional Cloud Developer",
-    image: GoogleCloudImage,
+    image: "/images/certificates/google.png",
     description:
       "Google Cloud Professional Developer – chứng nhận kỹ năng xây dựng, triển khai và tối ưu ứng dụng trên Google Cloud",
     borderColor: "border-[#055FD1]",
   },
   {
     name: "OCA / OCP Java SE",
-    image: JavaImage,
+    image: "/images/certificates/java.png",
     description:
       "Oracle Certified Associate / Professional – chứng nhận năng lực lập trình Java SE từ cơ bản đến nâng cao",
     borderColor: "border-[#5396b1]",
   },
   {
     name: "COA",
-    image: OpenStackImage,
+    image: "/images/certificates/openstack.png",
     description:
       "Certified OpenStack Administrator – chứng nhận quản trị và vận hành hệ thống cloud OpenStack",
     borderColor: "border-[#ed1844]",
   },
   {
     name: "MongoDB",
-    image: MongodbImage,
+    image: "/images/certificates/mongodb.png",
     description:
       "MongoDB Certification – chứng nhận kỹ năng làm việc với cơ sở dữ liệu NoSQL MongoDB",
     borderColor: "border-[#00684a]",
   },
   {
     name: "PMI-ACP",
-    image: AcpImage,
+    image: "/images/certificates/acp.png",
     description:
       "PMI Agile Certified Practitioner – chứng nhận quản lý dự án theo phương pháp Agile",
     borderColor: "border-[#4b3290]",
   },
   {
     name: "N2 Japanese",
-    image: N2JapaneseImage,
+    image: "/images/certificates/n2.png",
     description:
       "JLPT N2 – chứng nhận năng lực tiếng Nhật trình độ trung cao, có khả năng sử dụng trong công việc",
     borderColor: "border-[#5aa2d4]",
   },
   {
     name: "OCI",
-    image: OciImage,
+    image: "/images/certificates/oci.png",
     description:
       "Oracle Cloud Infrastructure – Foundation / Solution Architect, chứng nhận kiến thức nền tảng và thiết kế giải pháp trên nền tảng cloud của Oracle",
     borderColor: "border-[#3377a7]",
   },
   {
     name: "ISTQB Foundation Level (CTFL)",
-    image: IistqbImage,
+    image: "/images/certificates/istqb.jpg",
     description:
       "ISTQB Foundation Level (CTFL) – Chứng chỉ ISTQB® Certified Tester Foundation Level (CTFL) là nền tảng của kiến thức kiểm tra thiết yếu có thể được áp dụng cho các tình huống trong thế giới thực.",
     borderColor: "border-[#055FD1]",
   },
   {
     name: "ISTQB Advanced Level (CTAL)",
-    image: IistqbAdvancedImage,
+    image: "/images/certificates/istqb-advanced.jpg",
     description:
       "ISTQB Advanced Level (CTAL) - TM – Chứng chỉ Advanced Level Test Analyst cung cấp các kỹ năng cần thiết để thực hiện kiểm tra phần mềm có cấu trúc và kỹ lưỡng trong suốt vòng đời phát triển phần mềm",
     borderColor: "border-[#055FD1]",
   },
   {
     name: "UX - Research",
-    image: UxResearchImage,
+    image: "/images/certificates/ux.png",
     description:
       "UX - Research – Chứng chỉ UX Research cung cấp các kỹ năng cần thiết để thực hiện nghiên cứu UX có cấu trúc và kỹ lưỡng trong suốt vòng đời phát triển phần mềm",
     borderColor: "border-[#ed1844]",
   },
   {
     name: "UX Google Design",
-    image: UxGoogleDesignImage,
+    image: "/images/certificates/ux-google.png",
     description:
       "UX Google Design – Chứng chỉ UX Google Design cung cấp các kỹ năng cần thiết để thực hiện thiết kế UX có cấu trúc và kỹ lưỡng trong suốt vòng đời phát triển phần mềm",
     borderColor: "border-[#4285F4]",
@@ -115,12 +102,13 @@ export default function Certificates() {
               title={cert.description}
             >
               <div className="py-5 items-center justify-center flex h-[200px] pointer-events-none">
-                <Image
+                <img
                   src={cert.image}
                   alt={cert.description}
                   width={180}
                   height={100}
                   loading="lazy"
+                  decoding="async"
                   draggable={false}
                 />
               </div>
@@ -156,12 +144,13 @@ export default function Certificates() {
                 title={cert.description}
               >
                 <div className="py-5 items-center justify-center flex h-[180px]">
-                  <Image
+                  <img
                     src={cert.image}
                     alt={cert.description}
                     width={160}
                     height={90}
                     loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <div className="border-t border-gray-200 w-full p-3">

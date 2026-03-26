@@ -1,40 +1,34 @@
-import getRequirementsIcon from "@/public/icons/workflow/get-requirement.png";
-import studyCaseIcon from "@/public/icons/workflow/study.png";
-import sprintIcon from "@/public/icons/workflow/sprint-design.png";
-import developIcon from "@/public/icons/workflow/develop.png";
-import qaIcon from "@/public/icons/workflow/qa.png";
-import Image from "next/image";
 import { ArrowRightIcon } from "lucide-react";
 
 const steps = [
   {
-    icon: getRequirementsIcon,
+    icon: "/icons/workflow/get-requirement.png",
     title: "Tiếp nhận yêu cầu",
     description: "Tiếp nhận và làm rõ yêu cầu từ khách hàng",
     borderColor: "border-[#6AA2F6]",
   },
   {
-    icon: studyCaseIcon,
+    icon: "/icons/workflow/study.png",
     title: "Phân tích, thiết kế",
     description:
       "Phân tích và thiết kế tài liệu srs, UI/.UX & technical design",
     borderColor: "border-[#6AA2F6]",
   },
   {
-    icon: sprintIcon,
+    icon: "/icons/workflow/sprint-design.png",
     title: "Lập kế hoạch",
     description:
       "Tạo plan với các loại hình watterfall, agile hoặc hyberid và confirm khách hàng",
     borderColor: "border-[#3CF2FF]",
   },
   {
-    icon: developIcon,
+    icon: "/icons/workflow/develop.png",
     title: "Implements",
     description: "Code, Testing  và tạo documents",
     borderColor: "border-[#6AA2F6]",
   },
   {
-    icon: qaIcon,
+    icon: "/icons/workflow/qa.png",
     title: "Deploy & Maitnainance",
     description: "Triển khai code lên môi trường và bảo trì hệ thống",
     borderColor: "border-[#6AA2F6]",
@@ -64,7 +58,6 @@ export default function Workflow() {
           {/* Workflow Steps */}
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             {steps.map((step, index) => {
-              const Icon = step.icon;
               return (
                 <div
                   key={index}
@@ -74,11 +67,13 @@ export default function Workflow() {
                     {index + 1}
                   </span>
                   <div className="inline-block p-5 group-hover:scale-110 transition-transform">
-                    <Image
-                      src={Icon}
+                    <img
+                      src={step.icon}
                       alt={step.title}
                       width={100}
                       height={100}
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <h3 className="font-bold text-primary mb-4 text-[18px]">

@@ -1,39 +1,22 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import { TwoRowSlider } from "@/components/common/app-swipe-slider";
-import TechnicalStackImage from "@/public/images/technicals/background.png";
-import AWSImage from "@/public/icons/technicals/aws-icon.png";
-import GoogleCloudImage from "@/public/icons/technicals/google-cloud-icon.png";
-import OracleImage from "@/public/icons/technicals/oracle-icon.png";
-import KubernetesImage from "@/public/icons/technicals/kubernetes-icon.png";
-import DockerImage from "@/public/icons/technicals/docker-icon.png";
-import JavaImage from "@/public/icons/technicals/java-icon.png";
-import ReactJSImage from "@/public/icons/technicals/react-js-icon.png";
-import NextJSImage from "@/public/icons/technicals/nextjs-icon.png";
-import NodeJSImage from "@/public/icons/technicals/node-js-icon.png";
-import PHPImage from "@/public/icons/technicals/php-icon.png";
-import MySQLImage from "@/public/icons/technicals/mysql-icon.png";
-import MongoDBImage from "@/public/icons/technicals/mongodb-icon.png";
-import IOSImage from "@/public/icons/technicals/ios-icon.png";
-import AndroidImage from "@/public/icons/technicals/android-icon.png";
-import FlutterImage from "@/public/icons/technicals/flutter-icon.png";
 
 const techs = [
-  { name: "AWS", icon: AWSImage },
-  { name: "Google", icon: GoogleCloudImage },
-  { name: "Oracle DB", icon: OracleImage },
-  { name: "Kubernetes", icon: KubernetesImage },
-  { name: "Docker", icon: DockerImage },
-  { name: "Java", icon: JavaImage },
-  { name: "ReactJS", icon: ReactJSImage },
-  { name: "NextJS", icon: NextJSImage },
-  { name: "NodeJS", icon: NodeJSImage },
-  { name: "PHP", icon: PHPImage },
-  { name: "MySQL", icon: MySQLImage },
-  { name: "MongoDB", icon: MongoDBImage },
-  { name: "IOS", icon: IOSImage },
-  { name: "Android", icon: AndroidImage },
-  { name: "Flutter", icon: FlutterImage },
+  { name: "AWS", icon: "/icons/technicals/aws-icon.png" },
+  { name: "Google", icon: "/icons/technicals/google-cloud-icon.png" },
+  { name: "Oracle DB", icon: "/icons/technicals/oracle-icon.png" },
+  { name: "Kubernetes", icon: "/icons/technicals/kubernetes-icon.png" },
+  { name: "Docker", icon: "/icons/technicals/docker-icon.png" },
+  { name: "Java", icon: "/icons/technicals/java-icon.png" },
+  { name: "ReactJS", icon: "/icons/technicals/react-js-icon.png" },
+  { name: "NextJS", icon: "/icons/technicals/nextjs-icon.png" },
+  { name: "NodeJS", icon: "/icons/technicals/node-js-icon.png" },
+  { name: "PHP", icon: "/icons/technicals/php-icon.png" },
+  { name: "MySQL", icon: "/icons/technicals/mysql-icon.png" },
+  { name: "MongoDB", icon: "/icons/technicals/mongodb-icon.png" },
+  { name: "IOS", icon: "/icons/technicals/ios-icon.png" },
+  { name: "Android", icon: "/icons/technicals/android-icon.png" },
+  { name: "Flutter", icon: "/icons/technicals/flutter-icon.png" },
 ];
 
 export default function TechStack() {
@@ -86,12 +69,13 @@ export default function TechStack() {
               key={tech.name}
               className="flex items-center justify-center p-3 group cursor-pointer rounded-2xl bg-white/70 backdrop-blur shadow-custom hover:shadow-lg transition-all"
             >
-              <Image
+              <img
                 src={tech.icon}
                 alt={tech.name}
                 width={80}
                 height={80}
                 loading="lazy"
+                decoding="async"
                 draggable={false}
                 className="object-contain group-hover:scale-110 transition-all duration-300"
               />
@@ -119,12 +103,13 @@ export default function TechStack() {
                   key={index}
                   className="flex items-center justify-center p-2 group cursor-pointer"
                 >
-                  <Image
+                  <img
                     src={tech.icon}
                     alt={tech.name}
                     width={64}
                     height={64}
                     loading="lazy"
+                    decoding="async"
                     className="object-contain group-hover:scale-110 transition-all duration-300"
                   />
                 </div>
@@ -135,12 +120,13 @@ export default function TechStack() {
           <div className="hidden md:block">
             <div className="grid grid-cols-3 gap-4">
               <div className="col-span-1">
-                <Image
-                  src={TechnicalStackImage}
+                <img
+                  src="/images/technicals/background.png"
                   alt="Năng lực kỹ thuật"
                   width={500}
                   height={100}
                   loading="lazy"
+                  decoding="async"
                   className="object-contain"
                 />
               </div>
