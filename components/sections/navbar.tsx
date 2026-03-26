@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 import { Menu, X } from 'lucide-react'
-import Image from 'next/image'
 import { scrollToSection } from '@/components/utils/scrollToSection'
 
 export default function Navbar() {
@@ -87,11 +86,13 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-[18px] flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-2" onClick={() => handleScrollTo('hero')}>
-          <Image
+          <img
             src={isScrolled ? '/images/logo-black.png' : '/images/logo.png'}
             alt="Logo"
             width={100}
             height={100}
+            loading="lazy"
+            decoding="async"
             className="w-45"
           />
         </div>
@@ -173,11 +174,13 @@ export default function Navbar() {
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
               <div className="flex items-center gap-2">
-                <Image
+                <img
                   src="/images/logo-black.png"
                   alt="Logo"
                   width={100}
                   height={100}
+                  loading="lazy"
+                  decoding="async"
                   className="w-45"
                 />
               </div>

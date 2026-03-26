@@ -53,6 +53,7 @@ export default function CTABanner() {
                 alt="CTA Banner"
                 width={500}
                 height={500}
+                unoptimized
                 loading="lazy"
               />
             </div>
