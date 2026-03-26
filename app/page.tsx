@@ -9,7 +9,7 @@ import Certificates from '@/components/sections/certificates'
 import Contact from '@/components/sections/contact'
 import CTABanner from '@/components/sections/cta-banner'
 import Footer from '@/components/sections/footer'
-import ScrollToTopButton from '@/components/sections/scroll-to-top'
+import PageButton from '@/components/sections/page-button'
 
 export default function Home() {
   return (
@@ -24,7 +24,7 @@ export default function Home() {
       <Contact />
       <CTABanner />
       <Footer />
-      <ScrollToTopButton />
+      <PageButton />
     </main>
   )
 }
