@@ -11,6 +11,8 @@ import N2JapaneseImage from "@/public/images/certificates/n2.png";
 import OciImage from "@/public/images/certificates/oci.png";
 import IistqbImage from "@/public/images/certificates/istqb.jpg";
 import IistqbAdvancedImage from "@/public/images/certificates/istqb-advanced.jpg";
+import UxResearchImage from "@/public/images/certificates/ux.png";
+import UxGoogleDesignImage from "@/public/images/certificates/ux-google.png";
 
 const certificates = [
   {
@@ -82,6 +84,20 @@ const certificates = [
     description:
       "ISTQB Advanced Level (CTAL) - TM – Chứng chỉ Advanced Level Test Analyst cung cấp các kỹ năng cần thiết để thực hiện kiểm tra phần mềm có cấu trúc và kỹ lưỡng trong suốt vòng đời phát triển phần mềm",
     borderColor: "border-[#055FD1]",
+  },
+  {
+    name: "UX - Research",
+    image: UxResearchImage,
+    description:
+      "UX - Research – Chứng chỉ UX Research cung cấp các kỹ năng cần thiết để thực hiện nghiên cứu UX có cấu trúc và kỹ lưỡng trong suốt vòng đời phát triển phần mềm",
+    borderColor: "border-[#ed1844]",
+  },
+  {
+    name: "UX Google Design",
+    image: UxGoogleDesignImage,
+    description:
+      "UX Google Design – Chứng chỉ UX Google Design cung cấp các kỹ năng cần thiết để thực hiện thiết kế UX có cấu trúc và kỹ lưỡng trong suốt vòng đời phát triển phần mềm",
+    borderColor: "border-[#4285F4]",
   },
 ];
 
