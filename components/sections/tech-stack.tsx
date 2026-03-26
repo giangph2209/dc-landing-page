@@ -74,8 +74,6 @@ export default function TechStack() {
                 alt={tech.name}
                 width={80}
                 height={80}
-                loading="lazy"
-                decoding="async"
                 draggable={false}
                 className="object-contain group-hover:scale-110 transition-all duration-300"
               />
@@ -108,8 +106,6 @@ export default function TechStack() {
                     alt={tech.name}
                     width={64}
                     height={64}
-                    loading="lazy"
-                    decoding="async"
                     className="object-contain group-hover:scale-110 transition-all duration-300"
                   />
                 </div>
@@ -125,8 +121,6 @@ export default function TechStack() {
                   alt="Năng lực kỹ thuật"
                   width={500}
                   height={100}
-                  loading="lazy"
-                  decoding="async"
                   className="object-contain"
                 />
               </div>

@@ -81,8 +81,6 @@ function Hotline() {
                 alt="facebook"
                 width={50}
                 height={50}
-                loading="lazy"
-                decoding="async"
                 className="absolute size-[50px] object-contain"
               />
             </a>
@@ -102,8 +100,6 @@ function Hotline() {
                 alt="zalo"
                 width={50}
                 height={50}
-                loading="lazy"
-                decoding="async"
                 className="absolute size-[50px] object-contain"
               />
             </a>
@@ -122,8 +118,6 @@ function Hotline() {
                 alt="call"
                 width={50}
                 height={50}
-                loading="lazy"
-                decoding="async"
                 className="absolute size-[50px] object-contain"
               />
             </a>

@@ -90,8 +90,6 @@ export default function Services() {
                         alt={service.title}
                         width={80}
                         height={80}
-                        loading="lazy"
-                        decoding="async"
                       />
                     </div>
                     <div className="">

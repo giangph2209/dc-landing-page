@@ -17,8 +17,6 @@ export default function Footer() {
                 alt="DC Software logo"
                 width={130}
                 height={130}
-                loading="lazy"
-                decoding="async"
                 className="w-40 h-auto"
               />
             </div>
@@ -38,8 +36,6 @@ export default function Footer() {
                   alt="Facebook"
                   width={18}
                   height={18}
-                  loading="lazy"
-                  decoding="async"
                   className="object-contain"
                 />
               </a>
