@@ -52,10 +52,11 @@ export default function CTABanner() {
               <Image
                 src={ImageCTA}
                 alt="CTA Banner"
-                width={500}
-                height={500}
+                width={300}
+                height={253}
                 loading="eager"
                 sizes="(min-width: 768px) 300px, 0px"
+                className="h-auto w-[300px]"
               />
             </div>
           </div>

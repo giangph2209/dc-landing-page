@@ -22,7 +22,7 @@ export default function Footer() {
                 className="w-40 h-auto"
               />
             </div>
-            <p className="text-sm text-[#64748B] leading-relaxed">
+            <p className="text-sm text-[#334155] leading-relaxed">
               DCSoftware cung cấp giải pháp phần mềm, outsourcing và dịch vụ số cho doanh nghiệp.
             </p>
             <div className="flex gap-3 pt-2">
@@ -127,7 +127,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs md:text-sm text-[#94A3B8]">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-3 text-xs md:text-sm text-[#475569]">
         <p>© {currentYear} DC Software</p>
         <div className="flex flex-wrap items-center gap-4">
           <a href="/privacy-policy" className="hover:text-[#0B63E5] transition-colors">

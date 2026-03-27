@@ -43,7 +43,7 @@ export default function Workflow() {
         <div className="max-w-7xl mx-auto px-6">
           {/* Header */}
           <div className="text-center mb-16">
-            <div className="inline-block px-4 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4">
+            <div className="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-4">
               WORKFLOW
             </div>
             <h2 className="text-4xl font-bold text-primary mb-4">
