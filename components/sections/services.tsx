@@ -56,15 +56,19 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative"
-      style={{
-        backgroundImage: "url(/images/service-bg.png)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
+      className="relative overflow-hidden"
     >
+      <Image
+        src="/images/service-bg.png"
+        alt=""
+        fill
+        aria-hidden="true"
+        sizes="100vw"
+        quality={60}
+        className="object-cover"
+      />
       <div className="py-15">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           {/* Header */}
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-primary mb-4">
@@ -82,7 +86,7 @@ export default function Services() {
             {services.map((service, index) => {
               return (
                 <div key={index} className="relative">
-                  <div className="absolute top-1 left-0 w-full h-full rounded-[24px] bg-gradient-to-r from-[#055FD1] to-[#00DBF2]" />
+                  <div className="absolute top-1 left-0 w-full h-full rounded-[24px] bg-linear-to-r from-[#055FD1] to-[#00DBF2]" />
                   {/* Icon container with gradient */}
                   <div className="group flex flex-col justify-between cursor-pointer h-full relative custom-card-shadow custom-card-shadow-hover">
                     <div className="inline-block p-3">
@@ -105,7 +109,7 @@ export default function Services() {
 
                     {/* Bottom accent dot */}
                     <div className="mt-4 flex items-center gap-2 justify-end">
-                      <div className="bg-gradient-to-r from-[#0057FB] to-[#00DCE5] rounded-full p-2 flex items-center justify-center hover:scale-110 transition-transform">
+                      <div className="bg-linear-to-r from-[#0057FB] to-[#00DCE5] rounded-full p-2 flex items-center justify-center hover:scale-110 transition-transform">
                         <ArrowRightIcon
                           size={18}
                           className="text-white font-bold"

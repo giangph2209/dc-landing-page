@@ -145,7 +145,7 @@ export default function Projects() {
                 {projects.map((project) => (
                   <div
                     key={project.id}
-                    className="w-full md:w-1/2 lg:w-1/3 flex-shrink-0 px-4"
+                    className="w-full md:w-1/2 lg:w-1/3 shrink-0 px-4"
                   >
                     <div className="rounded-2xl cursor-pointer transition-all p-4 h-full group shadow-custom custom-card-shadow custom-card-shadow-hover">
                       <div className="relative w-full aspect-video overflow-hidden rounded-2xl">
@@ -153,7 +153,8 @@ export default function Projects() {
                           src={project.image}
                           alt={project.title}
                           fill
-                          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                          sizes="(min-width: 1024px) 340px, (min-width: 768px) 330px, 92vw"
+                          quality={60}
                           className="object-cover border border-gray-200 group-hover:scale-110 transition-transform"
                         />
                       </div>

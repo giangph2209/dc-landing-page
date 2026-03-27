@@ -1,15 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { MailIcon, SendIcon, PhoneIcon } from "lucide-react";
+import { ChevronDownIcon, MailIcon, SendIcon, PhoneIcon } from "lucide-react";
 import Image from "next/image";
-import {
-  SelectContent,
-  SelectItem,
-  SelectValue,
-  SelectTrigger,
-  Select,
-} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -102,12 +95,19 @@ export default function Contact() {
       setIsSubmitting(true);
       setSubmitStatus(null);
 
+      const payload = {
+        ...formData,
+        serviceType:
+          serviceOptions.find((option) => option.value === formData.serviceType)
+            ?.label || formData.serviceType,
+      };
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
 
       const data = await res.json().catch(() => null as any);
@@ -282,35 +282,35 @@ export default function Contact() {
                     >
                       Loại dịch vụ <span className="text-red-500">*</span>
                     </label>
-                    <Select
-                      onValueChange={(value) =>
-                        setFormData((prev) => ({
-                          ...prev,
-                          serviceType:
-                            serviceOptions.find(
-                              (option) => option.value === value,
-                            )?.label || "",
-                        }))
-                      }
-                    >
-                      <SelectTrigger
+                    <div className="relative">
+                      <select
+                        id="serviceType"
+                        name="serviceType"
                         aria-label="Chọn loại dịch vụ"
-                        className="w-full px-4 py-6 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        aria-invalid={Boolean(errors.serviceType)}
+                        value={formData.serviceType}
+                        onChange={(e) =>
+                          setFormData((prev) => ({
+                            ...prev,
+                            serviceType: e.target.value,
+                          }))
+                        }
+                        className="focus-visible:border-ring focus-visible:ring-ring/50 w-full h-12 appearance-none rounded-lg border bg-white pr-10 pl-4 text-sm shadow-xs outline-none transition-[color,box-shadow] text-gray-600 focus-visible:ring-[3px]"
                       >
-                        <SelectValue placeholder="Chọn loại dịch vụ" />
-                      </SelectTrigger>
-                      <SelectContent
-                        position="popper"
-                        avoidCollisions={false}
-                        onCloseAutoFocus={(e: any) => e.preventDefault()}
-                      >
+                        <option value="" disabled>
+                          Chọn loại dịch vụ
+                        </option>
                         {serviceOptions.map((option) => (
-                          <SelectItem key={option.value} value={option.value}>
+                          <option key={option.value} value={option.value}>
                             {option.label}
-                          </SelectItem>
+                          </option>
                         ))}
-                      </SelectContent>
-                    </Select>
+                      </select>
+                      <ChevronDownIcon
+                        className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 opacity-50"
+                        aria-hidden="true"
+                      />
+                    </div>
                     {errors.serviceType && (
                       <p className="text-red-500 text-sm mt-1 ml-1">
                         {errors.serviceType}
