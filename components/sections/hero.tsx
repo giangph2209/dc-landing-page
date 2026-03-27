@@ -1,7 +1,5 @@
-"use client";
 import Image from 'next/image'
 import { ArrowRight, Play } from 'lucide-react'
-import { scrollToSection } from '@/components/utils/scrollToSection'
 
 export default function Hero() {
   return (
@@ -16,7 +14,7 @@ export default function Hero() {
         priority
         fetchPriority="high"
         loading="eager"
-        quality={70}
+        quality={60}
         sizes="100vw"
         className="object-cover md:blur-none"
       />
@@ -26,7 +24,7 @@ export default function Hero() {
           <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold mb-3 leading-tight text-balance">
             Đối tác triển khai
             <br />
-            <span className="bg-gradient-to-r from-cyan-300 via-blue-300 to-cyan-200 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-cyan-300 via-blue-300 to-cyan-200 bg-clip-text text-transparent">
               Phần mềm tin cậy
             </span>
           </h1>
@@ -35,21 +33,19 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 items-center justify-center">
-            <button
-              type="button"
-              onClick={() => scrollToSection('contact', 80)}
+            <a
+              href="#contact"
               className="custom-btn-bg-gradient transition-all transform hover:scale-105 px-8 h-[54px] text-white font-semibold rounded-full flex items-center justify-center gap-2 cursor-pointer"
             >
               Nhận báo giá dự án
               <ArrowRight size={20} />
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollToSection('workflow', 80)}
+            </a>
+            <a
+              href="#workflow"
               className="px-8 py-3 border-2 cursor-pointer border-cyan-400 text-cyan-300 font-semibold rounded-full hover:bg-cyan-400/10 transition-colors flex items-center justify-center gap-2"
             >
               <Play size={20} /> Xem quy trình
-            </button>
+            </a>
           </div>
         </div>
       </div>

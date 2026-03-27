@@ -1,22 +1,8 @@
-"use client";
 import { CheckCircle, ChevronRight } from "lucide-react";
 import ImageCTA from "@/public/images/cta/cta.png";
 import Image from "next/image";
-import { scrollToSection } from "@/components/utils/scrollToSection";
-import { toast } from "react-toastify";
 
 export default function CTABanner() {
-
-  const handleClick = () => {
-    scrollToSection("contact", 80);
-    toast.info(
-      "Vui lòng điền đầy đủ thông tin vào form liên hệ phía trên để nhận tư vấn miễn phí từ DCSoftware.",
-      {
-        autoClose: 4000,
-      },
-    );
-  }
-
   return (
     <section className="py-15 px-6 relative overflow-hidden" >
       <div className="max-w-7xl mx-auto xl:px-6">
@@ -42,10 +28,10 @@ export default function CTABanner() {
                 <p className="flex items-center gap-2"><CheckCircle size={20} /> Uớc lượng thời gian triển khai</p>
               </div>
 
-              <button onClick={handleClick} className="inline-flex items-center cursor-pointer gap-2 px-8 py-4 bg-gradient-to-r from-cyan-300 to-teal-300 text-blue-900 font-bold rounded-full hover:shadow-xl hover:shadow-cyan-400/50 transition-all transform hover:scale-105">
+              <a href="#contact" className="inline-flex items-center cursor-pointer gap-2 px-8 py-4 bg-linear-to-r from-cyan-300 to-teal-300 text-blue-900 font-bold rounded-full hover:shadow-xl hover:shadow-cyan-400/50 transition-all transform hover:scale-105">
                 <span>Nhận tư vấn ngay</span>
                 <ChevronRight size={20} />
-              </button>
+              </a>
             </div>
 
             <div className="absolute top-1/3 -translate-y-1/2 right-0 opacity-80 w-[300px] md:block hidden">
