@@ -13,7 +13,6 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { toast } from "react-toastify";
 
 const serviceOptions = [
   { value: "website_app", label: "Website - App" },
@@ -27,6 +26,10 @@ const serviceOptions = [
 ];
 
 export default function Contact() {
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error";
+    message: string;
+  } | null>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -75,6 +78,7 @@ export default function Contact() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
+    if (submitStatus) setSubmitStatus(null);
     setFormData((prev) => ({
       ...prev,
       [name]: value,
@@ -86,10 +90,17 @@ export default function Contact() {
 
     if (isSubmitting || hasSubmitted) return;
 
-    if (!validate()) return;
+    if (!validate()) {
+      setSubmitStatus({
+        type: "error",
+        message: "Vui lòng kiểm tra lại thông tin bắt buộc.",
+      });
+      return;
+    }
 
     try {
       setIsSubmitting(true);
+      setSubmitStatus(null);
 
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -102,20 +113,25 @@ export default function Contact() {
       const data = await res.json().catch(() => null as any);
 
       if (!data || data.statusCode !== 201) {
-        toast.error(
-          data?.message ||
-          "Đã xảy ra lỗi khi gửi yêu cầu, vui lòng thử lại sau.",
-        );
+        setSubmitStatus({
+          type: "error",
+          message:
+            data?.message || "Đã xảy ra lỗi khi gửi yêu cầu, vui lòng thử lại sau.",
+        });
         return;
       }
 
       setHasSubmitted(true);
-      toast.success(
-        data.message ||
-        "Cảm ơn bạn đã liên hệ, chúng tôi sẽ phản hồi sớm nhất.",
-      );
+      setSubmitStatus({
+        type: "success",
+        message:
+          data.message || "Cảm ơn bạn đã liên hệ, chúng tôi sẽ phản hồi sớm nhất.",
+      });
     } catch (error) {
-      toast.error("Không thể kết nối tới máy chủ, vui lòng thử lại sau.");
+      setSubmitStatus({
+        type: "error",
+        message: "Không thể kết nối tới máy chủ, vui lòng thử lại sau.",
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -156,7 +172,7 @@ export default function Contact() {
                 {/* Phone */}
                 <a
                   href="tel:+84349964332"
-                  className="flex items-center gap-4 p-4 bg-gradient-to-r from-[#0B63E5] to-[#279AE7] text-white rounded-xl hover:shadow-lg transition-all group"
+                  className="flex items-center gap-4 p-4 bg-linear-to-r from-[#0B63E5] to-[#279AE7] text-white rounded-xl hover:shadow-lg transition-all group"
                 >
                   <PhoneIcon size={30} />
                   <div>
@@ -322,19 +338,31 @@ export default function Contact() {
                   />
                 </div>
 
-                <Button
-                  type="submit"
-                  disabled={isSubmitting || hasSubmitted}
-                  className="float-right py-5 cursor-pointer hover:shadow-lg bg-gradient-to-r text-white from-[#6BF2C6] to-[#279AE7] font-semibold rounded-lg disabled:opacity-60 disabled:cursor-not-allowed"
-                >
-                  <SendIcon className="w-4 h-4" />
-                  {hasSubmitted
-                    ? "Đã gửi yêu cầu"
-                    : isSubmitting
-                      ? "Đang gửi..."
-                      : "Gửi yêu cầu"}
-                </Button>
+                <div className="flex justify-end">
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting || hasSubmitted}
+                    className="py-5 cursor-pointer hover:shadow-lg bg-linear-to-r text-white from-[#6BF2C6] to-[#279AE7] font-semibold rounded-lg disabled:opacity-60 disabled:cursor-not-allowed"
+                  >
+                    <SendIcon className="w-4 h-4" />
+                    {hasSubmitted
+                      ? "Đã gửi yêu cầu"
+                      : isSubmitting
+                        ? "Đang gửi..."
+                        : "Gửi yêu cầu"}
+                  </Button>
+                </div>
               </form>
+              {submitStatus && (
+                <p
+                  className={`text-sm mt-5 ${submitStatus.type === "success"
+                    ? "text-green-600 bg-green-500/10 p-2 rounded-lg"
+                    : "text-red-600 bg-red-500/10 p-2 rounded-lg"
+                    }`}
+                >
+                  {submitStatus.message}
+                </p>
+              )}
             </div>
           </div>
         </div>

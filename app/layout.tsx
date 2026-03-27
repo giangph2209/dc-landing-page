@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Sans } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ["latin"],
@@ -81,18 +78,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <head>
-        <link
-          rel="preload"
-          as="image"
-          href="/images/hero-banner.jpg"
-          fetchPriority="high"
-        />
-      </head>
       <body className={`${ibmPlexSans.className} antialiased bg-white`}>
         {children}
-        <ToastContainer position="top-right" autoClose={3000} />
-        <Analytics />
       </body>
     </html>
   );

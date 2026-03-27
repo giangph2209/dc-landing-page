@@ -85,13 +85,13 @@ export default function Services() {
                   <div className="absolute top-1 left-0 w-full h-full rounded-[24px] bg-gradient-to-r from-[#055FD1] to-[#00DBF2]" />
                   {/* Icon container with gradient */}
                   <div className="group flex flex-col justify-between cursor-pointer h-full relative custom-card-shadow custom-card-shadow-hover">
-                    <div className="inline-block p-3  group-hover:scale-110 transition-transform">
+                    <div className="inline-block p-3">
                       <Image
                         src={service.icon}
                         alt={service.title}
-                        width={80}
-                        height={80}
-                        sizes="80px"
+                        width={70}
+                        height={70}
+                        sizes="120px"
                       />
                     </div>
                     <div className="">

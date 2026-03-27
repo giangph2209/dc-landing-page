@@ -12,7 +12,7 @@ import PageButton from '@/components/sections/page-button'
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white !overflow-x-hidden">
+    <main className="min-h-screen bg-white overflow-x-hidden!">
       <Navbar />
       <Hero />
       <Services />
