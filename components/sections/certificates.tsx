@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { TwoRowSlider } from "@/components/common/app-swipe-slider";
 
 const certificates = [
@@ -102,11 +103,12 @@ export default function Certificates() {
               title={cert.description}
             >
               <div className="py-5 items-center justify-center flex h-[200px] pointer-events-none">
-                <img
+                <Image
                   src={cert.image}
                   alt={cert.description}
                   width={180}
                   height={100}
+                  sizes="180px"
                   draggable={false}
                 />
               </div>
@@ -142,11 +144,12 @@ export default function Certificates() {
                 title={cert.description}
               >
                 <div className="py-5 items-center justify-center flex h-[180px]">
-                  <img
+                  <Image
                     src={cert.image}
                     alt={cert.description}
                     width={160}
                     height={90}
+                    sizes="160px"
                   />
                 </div>
                 <div className="border-t border-gray-200 w-full p-3">

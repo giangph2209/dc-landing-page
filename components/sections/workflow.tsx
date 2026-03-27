@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from "lucide-react";
+import Image from "next/image";
 
 const steps = [
   {
@@ -67,11 +68,12 @@ export default function Workflow() {
                     {index + 1}
                   </span>
                   <div className="inline-block p-5 group-hover:scale-110 transition-transform">
-                    <img
+                    <Image
                       src={step.icon}
                       alt={step.title}
                       width={100}
                       height={100}
+                      sizes="100px"
                     />
                   </div>
                   <h3 className="font-bold text-primary mb-4 text-[18px]">

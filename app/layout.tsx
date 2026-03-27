@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     "Chúng tôi cung cấp giải pháp phần mềm toàn diện với 800+ developers và 150+ dự án thành công",
   keywords: [
     "DC Software",
+    "DCS",
+    "dcsoftware",
+    "dc software",
     "dịch vụ triển khai phần mềm",
     "phần mềm tín cậy",
     "outsourcing",

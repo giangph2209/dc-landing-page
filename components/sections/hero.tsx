@@ -1,3 +1,4 @@
+"use client";
 import Image from 'next/image'
 import { ArrowRight, Play } from 'lucide-react'
 import { scrollToSection } from '@/components/utils/scrollToSection'
@@ -13,7 +14,7 @@ export default function Hero() {
         alt="Vn Software - Đối tác triển khai phần mềm tin cậy"
         fill
         priority
-        unoptimized
+        quality={70}
         sizes="100vw"
         className="object-cover md:blur-none"
       />

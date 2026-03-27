@@ -1,5 +1,6 @@
 "use client";
 import clsx from "clsx";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { EllipsisIcon } from "@/components/icons/ellipsis-icon";
 import useScroll from "@/hooks/use-scroll";
@@ -76,11 +77,12 @@ function Hotline() {
               className="size-[50px] rounded-full shadow-sm flex items-center justify-center cursor-pointer relative overflow-visible hover:scale-105 transition-all duration-300"
             >
               <span className="absolute inline-flex h-[75%] w-[75%] animate-ping rounded-full bg-blue-400 opacity-50"></span>
-              <img
+              <Image
                 src={"/images/contact/facebook.png"}
                 alt="facebook"
                 width={50}
                 height={50}
+                sizes="50px"
                 className="absolute size-[50px] object-contain"
               />
             </a>
@@ -95,11 +97,12 @@ function Hotline() {
               )}
             >
               <span className="absolute inline-flex h-[75%] w-[75%] animate-ping rounded-full bg-blue-600 opacity-50"></span>
-              <img
+              <Image
                 src={"/images/contact/zalo.png"}
                 alt="zalo"
                 width={50}
                 height={50}
+                sizes="50px"
                 className="absolute size-[50px] object-contain"
               />
             </a>
@@ -113,11 +116,12 @@ function Hotline() {
             >
               <span className="absolute inline-flex h-[75%] w-[75%] animate-ping rounded-full bg-green-400 opacity-50"></span>
               {/* <span className="relative inline-flex size-[50px] rounded-full bg-sky-500"></span> */}
-              <img
+              <Image
                 src={"/images/contact/call.png"}
                 alt="call"
                 width={50}
                 height={50}
+                sizes="50px"
                 className="absolute size-[50px] object-contain"
               />
             </a>
