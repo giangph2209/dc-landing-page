@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "DC Software - Dịch vụ triển khai Phần mềm tín cậy",
     description:
       "Chúng tôi cung cấp giải pháp phần mềm toàn diện với 800+ developers và 150+ dự án thành công",
-    url: "https://example.com",
+    url: "https://www.dcsoftware.vn",
     siteName: "DC Software",
     images: [
       {
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     type: "website",
   },
   alternates: {
-    canonical: "https://example.com",
+    canonical: "https://www.dcsoftware.vn",
   },
   icons: {
     icon: [
