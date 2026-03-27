@@ -277,7 +277,10 @@ export default function Contact() {
                         }))
                       }
                     >
-                      <SelectTrigger className="w-full px-4 py-6 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                      <SelectTrigger
+                        aria-label="Chọn loại dịch vụ"
+                        className="w-full px-4 py-6 bg-white border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      >
                         <SelectValue placeholder="Chọn loại dịch vụ" />
                       </SelectTrigger>
                       <SelectContent

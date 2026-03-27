@@ -81,6 +81,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
+      <head>
+        <link
+          rel="preload"
+          as="image"
+          href="/images/hero-banner.jpg"
+          fetchPriority="high"
+        />
+      </head>
       <body className={`${ibmPlexSans.className} antialiased bg-white`}>
         {children}
         <ToastContainer position="top-right" autoClose={3000} />

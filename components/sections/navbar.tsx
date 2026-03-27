@@ -94,6 +94,7 @@ export default function Navbar() {
             height={100}
             loading="eager"
             priority
+            fetchPriority="high"
             sizes="180px"
             className="w-45"
           />
@@ -153,6 +154,8 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
+          type="button"
+          aria-label={isOpen ? 'Đóng menu điều hướng' : 'Mở menu điều hướng'}
           className={`lg:hidden ${isScrolled ? 'text-[#0B1F4A]' : 'text-white'
             }`}
           onClick={isOpen ? closeMenu : openMenu}

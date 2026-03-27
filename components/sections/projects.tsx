@@ -122,7 +122,7 @@ export default function Projects() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-100 rounded-full blur-3xl opacity-20 -z-10"></div>
         <div className="max-w-7xl mx-auto relative">
           <div className="text-center">
-            <h3 className="inline-block px-4 py-1 bg-blue-100 text-blue-600 rounded-full text-sm font-semibold mb-4">
+            <h3 className="inline-block px-4 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-4">
               DỰ ÁN ĐÃ THỰC HIỆN
             </h3>
             <h2 className="text-4xl font-bold text-primary">
@@ -192,6 +192,8 @@ export default function Projects() {
             </div>
             {currentIndex > 0 && (
               <button
+                type="button"
+                aria-label="Xem dự án trước"
                 onClick={prevSlide}
                 disabled={isAnimating}
                 className={`absolute lg:left-[15px] left-[30px] top-1/2 -translate-y-1/2 -translate-x-6 z-10 text-white rounded-full p-3 custom-btn-bg-gradient ${isAnimating
@@ -205,6 +207,8 @@ export default function Projects() {
 
             {currentIndex < maxIndex && (
               <button
+                type="button"
+                aria-label="Xem dự án tiếp theo"
                 onClick={nextSlide}
                 disabled={isAnimating}
                 className={`absolute lg:right-[15px] right-[30px] top-1/2 -translate-y-1/2 translate-x-6 z-10 text-white rounded-full p-3 custom-btn-bg-gradient ${isAnimating
