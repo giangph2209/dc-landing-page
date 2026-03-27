@@ -56,9 +56,9 @@ export default function Footer() {
 
           {/* Services */}
           <div className="space-y-3 col-span-1">
-            <h4 className="text-sm font-semibold text-[#0B1F4A] uppercase tracking-wide">
+            <h3 className="text-sm font-semibold text-[#0B1F4A] uppercase tracking-wide">
               Dịch vụ
-            </h4>
+            </h3>
             <ul className="space-y-2 text-sm text-[#475569]">
               <li>Web Development</li>
               <li>Mobile App</li>
@@ -72,9 +72,9 @@ export default function Footer() {
           </div>
 
           <div className="space-y-3 col-span-1">
-            <h4 className="text-sm font-semibold text-[#0B1F4A] uppercase tracking-wide">
+            <h3 className="text-sm font-semibold text-[#0B1F4A] uppercase tracking-wide">
               Mô hình hợp tác
-            </h4>
+            </h3>
             <ul className="space-y-2 text-sm text-[#475569]">
               <li>Triển khai toàn bộ dự án</li>
               <li>Nhân sự theo tháng/dự án</li>
@@ -85,9 +85,9 @@ export default function Footer() {
 
           {/* Digital services */}
           <div className="space-y-3 col-span-1">
-            <h4 className="text-sm font-semibold text-[#0B1F4A] uppercase tracking-wide">
+            <h3 className="text-sm font-semibold text-[#0B1F4A] uppercase tracking-wide">
               Dịch vụ số
-            </h4>
+            </h3>
             <ul className="space-y-2 text-sm text-[#475569]">
               <li>Cloud &amp; DevOps</li>
               <li>Bảo trì &amp; nâng cấp</li>
@@ -96,9 +96,9 @@ export default function Footer() {
 
           {/* Contact + Map */}
           <div className="space-y-3 col-span-2">
-            <h4 className="text-sm font-semibold text-[#0B1F4A] uppercase tracking-wide">
+            <h3 className="text-sm font-semibold text-[#0B1F4A] uppercase tracking-wide">
               Liên hệ
-            </h4>
+            </h3>
             <ul className="space-y-3 text-sm text-[#475569]">
               <li className="flex items-start gap-2">
                 <span className="mt-[3px] text-[#0B63E5]">

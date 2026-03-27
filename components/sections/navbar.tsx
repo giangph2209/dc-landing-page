@@ -8,54 +8,52 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [activeSection, setActiveSection] = React.useState<string>('hero')
+  const visibleRatiosRef = React.useRef<Record<string, number>>({})
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0)
+    }
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   React.useEffect(() => {
     const sectionIds = ['hero', 'services', 'workflow', 'capabilities', 'projects', 'certificates', 'contact']
+    const elements = sectionIds
+      .map((id) => ({ id, el: document.getElementById(id) }))
+      .filter((item): item is { id: string; el: HTMLElement } => Boolean(item.el))
 
-    let ticking = false
+    if (!elements.length) return
 
-    const updateScrollState = () => {
-      const scrollY = window.scrollY
-      setIsScrolled(scrollY > 0)
-
-      const viewportMiddle = scrollY + window.innerHeight / 2
-
-      let bestSection = 'hero'
-      let smallestDistance = Number.POSITIVE_INFINITY
-
-      for (const id of sectionIds) {
-        const el = document.getElementById(id)
-        if (!el) continue
-
-        const rect = el.getBoundingClientRect()
-        const sectionTop = rect.top + scrollY
-        const sectionBottom = rect.bottom + scrollY
-        const sectionMiddle = (sectionTop + sectionBottom) / 2
-
-        const distance = Math.abs(sectionMiddle - viewportMiddle)
-
-        const isIntersecting = sectionBottom > scrollY && sectionTop < scrollY + window.innerHeight
-
-        if (isIntersecting && distance < smallestDistance) {
-          smallestDistance = distance
-          bestSection = id
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          const id = entry.target.id
+          visibleRatiosRef.current[id] = entry.isIntersecting ? entry.intersectionRatio : 0
         }
-      }
 
-      setActiveSection(bestSection)
-      ticking = false
-    }
+        let bestSection = 'hero'
+        let bestRatio = 0
 
-    const handleScroll = () => {
-      if (!ticking) {
-        ticking = true
-        window.requestAnimationFrame(updateScrollState)
-      }
-    }
+        for (const id of sectionIds) {
+          const ratio = visibleRatiosRef.current[id] ?? 0
+          if (ratio > bestRatio) {
+            bestRatio = ratio
+            bestSection = id
+          }
+        }
 
-    updateScrollState()
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+        setActiveSection(bestSection)
+      },
+      { threshold: [0, 0.25, 0.5, 0.75, 1], rootMargin: '-20% 0px -35% 0px' },
+    )
+
+    for (const { el } of elements) observer.observe(el)
+
+    return () => observer.disconnect()
   }, [])
 
   const handleScrollTo = (id: string) => {
@@ -73,7 +71,7 @@ export default function Navbar() {
 
   const getActiveSection = (id: string) => {
     if (isScrolled) {
-      return activeSection === id ? 'text-primary-2' : 'text-[#0B1F4A] hover:text-primary-2'
+      return activeSection === id ? 'text-[#03acdb]' : 'text-[#0B1F4A] hover:text-[#03acdb]'
     } else {
       return activeSection === id ? 'text-white' : 'text-gray-300 hover:text-white'
     }
@@ -105,14 +103,14 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => handleScrollTo('services')}
-            className={`text-[16px] font-medium transition-colors ${getActiveSection('services')}`}
+            className={`text-[16px] cursor-pointer font-semibold transition-colors ${getActiveSection('services')}`}
           >
             Dịch Vụ
           </button>
           <button
             type="button"
             onClick={() => handleScrollTo('workflow')}
-            className={`text-[16px] font-medium transition-colors flex items-center gap-1 ${getActiveSection('workflow')}`}
+            className={`text-[16px] font-semibold cursor-pointer transition-colors flex items-center gap-1 ${getActiveSection('workflow')}`}
           >
             Quy Trình
             {/* <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg> */}
@@ -120,7 +118,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => handleScrollTo('capabilities')}
-            className={`text-[16px] font-medium transition-colors flex items-center gap-1 ${getActiveSection('capabilities')}`}
+            className={`text-[16px] font-semibold cursor-pointer transition-colors flex items-center gap-1 ${getActiveSection('capabilities')}`}
           >
             Năng lực kỹ thuật
             {/* <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg> */}
@@ -128,14 +126,14 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => handleScrollTo('projects')}
-            className={`text-[16px] font-medium transition-colors ${getActiveSection('projects')}`}
+            className={`text-[16px] font-semibold cursor-pointer transition-colors ${getActiveSection('projects')}`}
           >
             Dự án tiêu biểu
           </button>
           <button
             type="button"
             onClick={() => handleScrollTo('certificates')}
-            className={`text-[16px] font-medium transition-colors ${getActiveSection('certificates')}`}
+            className={`text-[16px] font-semibold cursor-pointer transition-colors ${getActiveSection('certificates')}`}
           >
             Chứng chỉ
           </button>
