@@ -1,4 +1,5 @@
 import { ArrowRightIcon } from "lucide-react";
+import Image from "next/image";
 
 const services = [
   {
@@ -85,11 +86,12 @@ export default function Services() {
                   {/* Icon container with gradient */}
                   <div className="group flex flex-col justify-between cursor-pointer h-full relative custom-card-shadow custom-card-shadow-hover">
                     <div className="inline-block p-3  group-hover:scale-110 transition-transform">
-                      <img
+                      <Image
                         src={service.icon}
                         alt={service.title}
                         width={80}
                         height={80}
+                        sizes="80px"
                       />
                     </div>
                     <div className="">

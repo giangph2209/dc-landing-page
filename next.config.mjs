@@ -3,9 +3,10 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
-  // images: {
-  //   unoptimized: true,
-  // },
+  images: {
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 31536000,
+  },
 }
 
 export default nextConfig

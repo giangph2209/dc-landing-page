@@ -1,3 +1,4 @@
+"use client";
 import { CheckCircle, ChevronRight } from "lucide-react";
 import ImageCTA from "@/public/images/cta/cta.png";
 import Image from "next/image";
@@ -53,8 +54,8 @@ export default function CTABanner() {
                 alt="CTA Banner"
                 width={500}
                 height={500}
-                unoptimized
                 loading="eager"
+                sizes="(min-width: 768px) 300px, 0px"
               />
             </div>
           </div>

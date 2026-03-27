@@ -1,5 +1,8 @@
+"use client";
+
 import React, { useState } from "react";
 import { MailIcon, SendIcon, PhoneIcon } from "lucide-react";
+import Image from "next/image";
 import {
   SelectContent,
   SelectItem,
@@ -135,11 +138,12 @@ export default function Contact() {
             <div className="col-span-1 lg:col-span-1 md:col-span-1 mb-4">
               <h2 className="text-4xl font-bold text-primary mb-4 flex items-center gap-2">
                 Liên hệ hợp tác
-                <img
+                <Image
                   src="/images/connect.png"
                   alt="Connect"
                   width={50}
                   height={50}
+                  sizes="50px"
                 />
               </h2>
               <p className="text-gray-600 mb-8">

@@ -1,4 +1,7 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import { TwoRowSlider } from "@/components/common/app-swipe-slider";
 
 const techs = [
@@ -69,11 +72,12 @@ export default function TechStack() {
               key={tech.name}
               className="flex items-center justify-center p-3 group cursor-pointer rounded-2xl bg-white/70 backdrop-blur shadow-custom hover:shadow-lg transition-all"
             >
-              <img
+              <Image
                 src={tech.icon}
                 alt={tech.name}
                 width={80}
                 height={80}
+                sizes="80px"
                 draggable={false}
                 className="object-contain group-hover:scale-110 transition-all duration-300"
               />
@@ -101,11 +105,12 @@ export default function TechStack() {
                   key={index}
                   className="flex items-center justify-center p-2 group cursor-pointer"
                 >
-                  <img
+                  <Image
                     src={tech.icon}
                     alt={tech.name}
                     width={64}
                     height={64}
+                    sizes="64px"
                     className="object-contain group-hover:scale-110 transition-all duration-300"
                   />
                 </div>
@@ -116,11 +121,12 @@ export default function TechStack() {
           <div className="hidden md:block">
             <div className="grid grid-cols-3 gap-4">
               <div className="col-span-1">
-                <img
+                <Image
                   src="/images/technicals/background.png"
                   alt="Năng lực kỹ thuật"
                   width={500}
                   height={100}
+                  sizes="(min-width: 1024px) 500px, 0px"
                   className="object-contain"
                 />
               </div>
